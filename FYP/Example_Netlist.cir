@@ -1,0 +1,53 @@
+* /Users/IOmotade/Desktop/School/4th_Year/FYP/Sims/3_node_array_wth_para_random.asc
+R1 N001 N005 {R}
+R2 N002 N006 {R}
+R3 N003 N007 {R}
+R4 N008 N012 {R}
+R5 N009 N013 {R}
+R6 N010 N014 {R}
+R7 N015 N019 {R}
+R8 N016 N020 {R}
+R9 N017 N021 {RKK}
+V1 V_1 0 PULSE(-5 5 0 1n 1n 5u 10u 100)
+V2 V_2 0 PULSE(-5 5 0 1n 1n 2.5u 5u 100)
+V3 V_3 0 PULSE(-5 5 0 1n 1n 1.25u 2.5u 100)
+R10 N012 N005 {RC}
+R11 N002 N001 {RR}
+R12 N013 N006 {RC}
+R13 N014 N007 {RC}
+R14 N019 N012 {RC}
+R15 N020 N013 {RC}
+R16 N021 N014 {RC}
+R17 N022 N019 {RC}
+R18 N023 N020 {RC}
+R19 N024 N021 {RC}
+R20 N003 N002 {RR}
+R21 N004 N003 {RR}
+R22 N009 N008 {RR}
+R23 N010 N009 {RR}
+R24 N011 N010 {RR}
+R25 N016 N015 {RR}
+R26 N017 N016 {RR}
+R27 N018 N017 {RR}
+V4 V_1DC 0 5
+V5 V_2DC 0 5
+V6 V_3DC 0 5
+R28 N022 0 {R_Amm}
+R29 N023 0 {R_Amm}
+R30 N024 0 {R_Amm}
+R31 N001 V_1DC {R_Amm}
+R32 N008 V_2DC {R_Amm}
+R33 N015 V_3DC {R_Amm}
+R34 NC_01 N005 {R_Amm}
+.param R = 10k
+.param R_Amm = 1n
+.param RC = 1k
+.param RR = 1k
+.param freq = 100K
+.param ncycles = 10
+* .tran 100u
+.op
+.op data label
+.param RKK = 0.9k
+.backanno
+.end
