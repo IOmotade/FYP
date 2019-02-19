@@ -115,7 +115,7 @@ compName = res.alias(strcmp(res.tag, rarCompName));
 for rowIdx = 1:N
     elemName = sprintf("%s%d", compName, rowIdx);
     posNode = sprintf('%s_%d', vCompName, rowIdx);
-    negNode = sprintf('%s%s%d%d', memRCompName, rowTag, rowIdx, colIdx);
+    negNode = sprintf('%s%s%d', memRCompName, rowTag, fPairFunction(rowIdx, colIdx));
     text = sprintf('%s %s %s %.12f\n', elemName, posNode, negNode, R_Amm);
     fprintf(fileID, text);
     

@@ -104,7 +104,7 @@ Io_ = fUnits(Io, 'A')
 
 
 %% second model version 3
-rst
+% rst
 N = 3;
 %define array
 R = 10e3; R = repmat(R, [N, N]);% R(3, 3) = 1.2e3;% R(3, 2) = 5e3; R(3, 3) = 30e3;
@@ -130,7 +130,7 @@ X = Vc;
 Is = zeros(N);
 Io = zeros(N);
 Ii = J*Io;
-iter = 0
+iter = 0;
 total_iter = 0;
 iter_limit = 5000;
 % %% Give answer:
@@ -158,7 +158,7 @@ while ((~hasConverged) && (iter<iter_limit))||(iter<5)
     Is = A*(Io)*(A^(-1));   %4th approx method for Is (more compact)
     %check for convergence
     hasConverged = fHasConverged([Io Vo], [Io_prev Vo_prev], 1e-1);
-    [Io Vo]
+    [Io Vo];
 end
 total_iter = total_iter + iter
 %display results

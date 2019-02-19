@@ -311,10 +311,12 @@ Circuit = fReadSpiceSimResults(fileLoc, Circuit)
 
 %% Full-Simulation with function
 rst
-N = 3;
+N = 50;
 MemR = 10e3*ones(N); LRowR = 1e3*ones(N); LColR = 1e3*ones(N);
 vs = 5; vs = repmat(vs, [N, 1]); %Source Voltage Vector(Nx1)
-Circuit = fMacSpiceSim(N, vs, MemR, LRowR, LColR)
+Circuit = fMacSpiceSim(N, vs, MemR, LRowR, LColR);
+% fUnits(Circuit.VO.value, 'V')
+% fUnits(Circuit.IO.value, 'A')
 
 %% Uniqueness study
 rst
