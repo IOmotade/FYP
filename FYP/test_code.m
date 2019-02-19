@@ -311,16 +311,22 @@ Circuit = fReadSpiceSimResults(fileLoc, Circuit)
 
 %% Full-Simulation with function
 rst
-N = 50;
+N = 3;
 MemR = 10e3*ones(N); LRowR = 1e3*ones(N); LColR = 1e3*ones(N);
 vs = 5; vs = repmat(vs, [N, 1]); %Source Voltage Vector(Nx1)
 Circuit = fMacSpiceSim(N, vs, MemR, LRowR, LColR)
 
 %% Uniqueness study
+rst
 for i = 1:50
     for j = 1:50
-        val(i, j) = 10*i+j;
+        val(i, j) = fPairFunction(i, j);
     end
 end
-val = val(:)
+val = val(:);
 size(unique(val)) == size(val)
+
+function f = fPairFunction(a, b)
+%Cantor Pairing Function
+f = (1/2)*(a+b)*(a+b+1) + b;
+end

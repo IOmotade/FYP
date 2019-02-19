@@ -130,9 +130,9 @@ fprintf(fileID, "\n\n*Memristor Resistances\n");
 compName = res.alias(strcmp(res.tag, memRCompName));
 for rowIdx = 1:N
     for colIdx = 1:N
-        elemName = sprintf('%s%d%d', compName, rowIdx, colIdx);
-        posNode = sprintf('%s%s%d%d', memRCompName, rowTag, rowIdx, colIdx);
-        negNode = sprintf('%s%s%d%d', memRCompName, colTag, rowIdx, colIdx);
+        elemName = sprintf('%s%d', compName, fPairFunction(rowIdx, colIdx));
+        posNode = sprintf('%s%s%d', memRCompName, rowTag, fPairFunction(rowIdx, colIdx));
+        negNode = sprintf('%s%s%d', memRCompName, colTag, fPairFunction(rowIdx, colIdx));
         value = MemR(rowIdx, colIdx);
         text = sprintf('%s %s %s %f\n', elemName, posNode, negNode, value);
         fprintf(fileID, text);
@@ -150,9 +150,9 @@ fprintf(fileID, "\n\n*Line Row Resistances\n");
 compName = res.alias(strcmp(res.tag, lRRCompName));
 for rowIdx = 1:N
     for colIdx = 1:N
-        elemName = sprintf('%s%d%d', compName, rowIdx, colIdx);
-        posNode = sprintf('%s%s%d%d', memRCompName, rowTag, rowIdx, colIdx);
-        negNode = sprintf('%s%s%d%d', memRCompName, rowTag, rowIdx, colIdx+1);
+        elemName = sprintf('%s%d', compName, fPairFunction(rowIdx, colIdx));
+        posNode = sprintf('%s%s%d', memRCompName, rowTag, fPairFunction(rowIdx, colIdx));
+        negNode = sprintf('%s%s%d', memRCompName, rowTag, fPairFunction(rowIdx, colIdx+1));
         value = LRowR(rowIdx, colIdx);
         text = sprintf('%s %s %s %f\n', elemName, posNode, negNode, value);
         fprintf(fileID, text);
@@ -174,9 +174,9 @@ fprintf(fileID, "\n\n*Line Column Resistances\n");
 compName = res.alias(strcmp(res.tag, lCRCompName));
 for rowIdx = 1:N
     for colIdx = 1:N
-        elemName = sprintf('%s%d%d', compName, rowIdx, colIdx);
-        posNode = sprintf('%s%s%d%d', memRCompName, colTag, rowIdx, colIdx);
-        negNode = sprintf('%s%s%d%d', memRCompName, colTag, rowIdx+1, colIdx);
+        elemName = sprintf('%s%d', compName, fPairFunction(rowIdx, colIdx));
+        posNode = sprintf('%s%s%d', memRCompName, colTag, fPairFunction(rowIdx, colIdx));
+        negNode = sprintf('%s%s%d', memRCompName, colTag, fPairFunction(rowIdx+1, colIdx));
         value = LColR(rowIdx, colIdx);
         text = sprintf('%s %s %s %f\n', elemName, posNode, negNode, value);
         fprintf(fileID, text);
@@ -197,7 +197,7 @@ compName = res.alias(strcmp(res.tag, carCompName));
 rowIdx = N+1;
 for colIdx = 1:N
     elemName = sprintf('%s%d', compName, colIdx);
-    posNode = sprintf('%s%s%d%d', memRCompName, colTag, rowIdx, colIdx);
+    posNode = sprintf('%s%s%d', memRCompName, colTag, fPairFunction(rowIdx, colIdx));
     negNode = '0';
     text = sprintf('%s %s %s %.12f\n', elemName, posNode, negNode, R_Amm);
     fprintf(fileID, text);
