@@ -84,18 +84,41 @@ sum(A(:)==B(:))/length(A(:))
 
 %% haar wavelets
 rst
-fsamp = 1e3;
-fsig = 500;
-t = 0:2*pi/(31*fs):2*pi;
-x = square(2*t);
+fsamp = 1e3; tsamp = 1/fsamp;
+fsig = 100;
+nsamp = 10*(fsamp/fsig);
+t = 0:tsamp:(nsamp-1)*tsamp;
+x = square(2*pi*fsig*t);
+
 figure;
 plot(t, x)
+xlim([0 1/fsig])
 title('actual waveform')
 
 figure;
 hft = haar_fft(x);
-plot(t, hft)
+norm_freq = ((1:length(hft))-1)/length(hft);
+norm_freq(hft==max(hft))*fsamp
+plot(norm_freq, hft)
 title('haar transform')
+
+figure;
+h = haar_ifft(hft);
+plot(t, h)
+xlim([0 2/fsig])
+title('reconstructed waveform')
+
+%filter waveform
+figure;
+hft(abs(hft)<max(abs(hft))/2) = 0;
+plot(norm_freq, abs(hft))
+title('filtered waveform response')
+
+figure;
+h = haar_ifft(hft);
+plot(t, h)
+xlim([0 2/fsig])
+title('reconstructed filtered waveform')
 
 %% random resistance value generator
 R = 1e6 * randn(3, 3)
@@ -315,8 +338,8 @@ N = 50;
 MemR = 10e3*ones(N); LRowR = 1e3*ones(N); LColR = 1e3*ones(N);
 vs = 5; vs = repmat(vs, [N, 1]); %Source Voltage Vector(Nx1)
 Circuit = fMacSpiceSim(N, vs, MemR, LRowR, LColR);
-% fUnits(Circuit.VO.value, 'V')
-% fUnits(Circuit.IO.value, 'A')
+fUnits(Circuit.VO.value, 'V')
+fUnits(Circuit.IO.value, 'A')
 
 %% Uniqueness study
 rst

@@ -119,7 +119,7 @@ U = fUTriangularMatrix(N);
 A = In - J;
 %define signals
 %voltages
-vs = 5; vs = repmat(vs, [N, 1]);
+vs = 5; vs = repmat(vs, [N, 1]); vs(1:2, :) = 0
 Vs = [vs zeros(N, N-1)];
 vc = zeros(N, 1);
 Vc = ones(N, 1)*transpose(vc);
