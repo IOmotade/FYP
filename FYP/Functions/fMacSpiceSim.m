@@ -1,8 +1,12 @@
 %% Full-Simulation
-function Circuit = fMacSpiceSim(N, vs, MemR, LRowR, LColR)
+function Circuit = fMacSpiceSim(N, vs, MemR, LRowR, LColR, scheme)
 if N~=length(vs)
     fprintf('Dimensions do not match');
     return
+end
+
+if ~exist('scheme', 'var')
+   scheme = '1'; 
 end
 
 %% Definition of different types of files
@@ -12,7 +16,7 @@ tmpSimOutputFile = string(['tmp' simOutputFile]);
 
 %% Generate Spice File
 fileLoc = spiceFileName;
-Circuit = fGenerateSpiceFile(N, vs, MemR, LRowR, LColR, fileLoc);
+Circuit = fGenerateSpiceFile(N, vs, MemR, LRowR, LColR, fileLoc, scheme);
 
 %% Perform Simulation Using Macspice
 command = sprintf('/Applications/MacSpice.app/Contents/MacOS/MacSpice -b mat_array.cir > %s',...

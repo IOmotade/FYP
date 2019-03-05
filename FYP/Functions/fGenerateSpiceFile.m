@@ -1,11 +1,15 @@
-function Circuit = fGenerateSpiceFile(N, vs, MemR, LRowR, LColR, fileLoc, spiceDir)
+function Circuit = fGenerateSpiceFile(N, vs, MemR, LRowR, LColR, fileLoc, scheme, spiceDir)
 if N~=length(vs)
     fprintf('Dimensions do not match');
     return
 end
 
 if(~exist('spiceDir', 'var'))
-   spiceDir = '.op\n'; 
+    spiceDir = '.op\n';
+end
+
+if ~exist('scheme', 'var')
+    scheme = '1';
 end
 
 %% Generate Matrices
@@ -13,11 +17,11 @@ end
 Vs(:, 1) = vs;
 
 %% Write-up Spice File
-Circuit = fWriteToSpiceFile(N, MemR, LRowR, LColR, Vo, Io, Vs, Is, X, fileLoc, spiceDir);
+Circuit = fWriteToSpiceFile(N, MemR, LRowR, LColR, Vo, Io, Vs, Is, X, fileLoc, scheme, spiceDir);
 
 end
 
-function Circuit = fWriteToSpiceFile(N, MemR, LRowR, LColR, Vo, Io, Vs, Is, X_, fileLoc, spiceDir)
+function Circuit = fWriteToSpiceFile(N, MemR, LRowR, LColR, Vo, Io, Vs, Is, X_, fileLoc, scheme, spiceDir)
 R_Amm = 1e-9; %Ohms Used as Ammeter
 
 %% Definition of Component Base Names
@@ -198,7 +202,11 @@ rowIdx = N+1;
 for colIdx = 1:N
     elemName = sprintf('%s%d', compName, colIdx);
     posNode = sprintf('%s%s%d', memRCompName, colTag, fPairFunction(rowIdx, colIdx));
-    negNode = '0';
+    if strcmp(scheme, '1')
+        negNode = '0';
+    elseif strcmp(scheme, '2')
+        negNode = sprintf('%s%s%d', carCompName, colTag, fPairFunction(rowIdx+1, colIdx));
+    end
     text = sprintf('%s %s %s %.12f\n', elemName, posNode, negNode, R_Amm);
     fprintf(fileID, text);
 end
