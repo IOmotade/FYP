@@ -154,7 +154,7 @@ for rowIdx = 1:numRows
     end
 end
 
-%% Output Current Matrix
+%% Input Current Matrix
 [numRows, numCols] = size(Circuit.II.devname);
 for rowIdx = 1:numRows
     for colIdx = 1:numCols

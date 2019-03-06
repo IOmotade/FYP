@@ -4,15 +4,28 @@ addpath(genpath('../FYP/Functions/'))
 [fig_az, fig_el] = deal(145, 30);
 
 %% Setup Circuit System
-N = 32;
+N = 3;
 MemR = abs(10e3*ones(N) + 0e3*randn(N));
 LRowR = abs(1e3*ones(N) + 0e3*randn(N));
 LColR = abs(1e3*ones(N) + 0e3*randn(N));
 
 vs_mag = [5, zeros(1, N-1)]';%Source Voltage Magnitude
-vs_idx = 1;
+vs_idx = 3;
 J = fShiftingMatrix(N);
 vs_mag = (J^(vs_idx-1))*vs_mag;
+vs_mag(:) = 5;
+
+is_mag = zeros(size(vs_mag(:, 1)));%Source Current Magnitude
+is_mag(end) = 1;%0.0014;
+is_mag(:) = 1;
+
+C = ones(2*N, 1);%Connection Matrix
+C = [0*C(1:N);
+    zeros(N, 1)];
+
+vs_ = [0 0 0 0 0 0].';
+is_ = [0 0 0 0 0 1].';
+C_  = [0 0 0 0 0 0].';
 
 %% Setup time samples
 fsamp = 10e3; tsamp = 1/fsamp;
@@ -25,7 +38,7 @@ fsource = base_freq*(2.^((1:N)-1))';
 %% Sim Setup
 % vs =
 vs = vs_mag.*square(2*pi*fsource*t);
-Circuit = fMacSpiceSim(N, vs(:, 1), MemR, LRowR, LColR);
+Circuit = fMacSpiceSim(N, vs(:, 1), is_mag, C, MemR, LRowR, LColR);
 Circuit = repmat(Circuit, [nsamp, 1]);
 freqVal = zeros(size(t));
 
@@ -35,7 +48,8 @@ tic
 wBar = waitbar(0, 'Starting Simulation');
 complete = zeros(nsamp, 1);
 for idx=1:nsamp
-    Circuit(idx) = fMacSpiceSim(N, vs(:, idx), MemR, LRowR, LColR, '2');
+%     Circuit(idx) = fMacSpiceSim(N, vs_, is_, C_, MemR, LRowR, LColR);
+%     Circuit(idx) = fMacSpiceSim(N, vs_mag, MemR, LRowR, LColR);
     complete(idx) = 1;
     progress = sum(complete)/nsamp;
     waitbar(progress, wBar, sprintf('Simulation Progress: %2.2f percent', 100*progress))
@@ -48,7 +62,8 @@ disp("Finished")
 
 timeCircuit = Circuit;
 Circuit = fFrequencyDomain(timeCircuit);
-
+fUnits(timeCircuit.IO.value, 'A')
+return
 %% Extract Data & Plot Spectrum
 timeVal = fGetFieldValues(Circuit.TimeDom, 'X');
 
@@ -66,7 +81,7 @@ hold off
 legend(lgnd)
 title("Plot of U");
 figure;
-surf(timeVal); view([fig_az fig_el]);
+surf(timeVal(1:N, 1:N)); view([fig_az fig_el]);
 set(gca,'xdir','reverse')
 xlabel('col'); ylabel('row'); zlabel('mag');
 title("Plot of U");

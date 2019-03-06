@@ -1,6 +1,6 @@
-function Circuit = fGenerateSpiceFile(N, vs, MemR, LRowR, LColR, fileLoc, scheme, spiceDir)
-if N~=length(vs)
-    fprintf('Dimensions do not match');
+function Circuit = fGenerateSpiceFile(N, vs, is, C, MemR, LRowR, LColR, fileLoc, spiceDir)
+if length(vs)~=(2*N)
+    fprintf('Dimensions do not match\n');
     return
 end
 
@@ -8,24 +8,29 @@ if(~exist('spiceDir', 'var'))
     spiceDir = '.op\n';
 end
 
-if ~exist('scheme', 'var')
-    scheme = '1';
-end
-
 %% Generate Matrices
 [Vo, Io, Vs, Is, X] = deal(zeros(N));
-Vs(:, 1) = vs;
+Vs(:, 1) = vs(1:N);
+Is(:, 1) = is(1:N);
+X(end+1, :) = vs(N+1:2*N);
+Io(end, :) = is(N+1:2*N);
 
 %% Write-up Spice File
-Circuit = fWriteToSpiceFile(N, MemR, LRowR, LColR, Vo, Io, Vs, Is, X, fileLoc, scheme, spiceDir);
+Circuit = fWriteToSpiceFile(N, C, MemR, LRowR, LColR, Vo, Io, Vs, Is, X, fileLoc, spiceDir);
 
 end
 
-function Circuit = fWriteToSpiceFile(N, MemR, LRowR, LColR, Vo, Io, Vs, Is, X_, fileLoc, scheme, spiceDir)
+function Circuit = fWriteToSpiceFile(N, C, MemR, LRowR, LColR, Vo, Io, Vs, Is, X_, fileLoc, spiceDir)
 R_Amm = 1e-9; %Ohms Used as Ammeter
+
+%% Definition of Connection Node Names and Vectors
+connNodeName = "C";
+[rowConnVec, colConnVec] = deal(C(1:N), C(N+1:end));
 
 %% Definition of Component Base Names
 vCompName = "V";
+iCompName = "I";
+
 memRCompName = "MemR";
 lRRCompName = "LRR";
 lCRCompName = "LCR";
@@ -72,7 +77,7 @@ IS.devname = repmat(" ", size(Is));
 
 %X Voltage Matrix
 X.value = X_;
-X.nodename = repmat(" ", size(Is));
+X.nodename = repmat(" ", size(X_));
 
 %%Device Properties
 %Memristor
@@ -92,14 +97,18 @@ fileID = fopen(fileLoc, 'w+');
 %%Comment: File Location & Name
 fprintf(fileID, "*%s\n", fileLoc);
 
-%% Write Voltage Sources into file
-%%Comment: Voltage Sources
-fprintf(fileID, "\n\n*Voltage Sources\n");
+%% Write Row Voltage Sources into file
+%%Comment: Row Voltage Sources
+fprintf(fileID, "\n\n*Row Voltage Sources\n");
 
 %%Generate Voltage Source Names
 for rowIdx = 1:N
-    elemName = sprintf('%s%d', vCompName, rowIdx);
-    posNode = sprintf('%s_%d', vCompName, rowIdx);
+    elemName = sprintf('%s%d', vCompName, fPairFunction(rowIdx, 0));
+    if rowConnVec(rowIdx) == 1
+        posNode = sprintf('%s_%d', strcat(rowTag, connNodeName), rowIdx);
+    else
+        posNode = sprintf('%s_%d', vCompName, fPairFunction(rowIdx, 0));
+    end
     negNode = '0';
     value = Vs(rowIdx, 1); %vs(rowIdx);
     text = sprintf('%s %s %s %f\n', elemName, posNode, negNode, value);
@@ -108,6 +117,24 @@ for rowIdx = 1:N
     VS.nodename(rowIdx, 1) = lower(string(posNode));
 end
 VS.nodename(:, 2:end) = lower(string(negNode));
+
+%% Write Row Current Sources into file
+%%Comment: Row Current Sources
+fprintf(fileID, "\n\n*Row Current Sources\n");
+
+%%Generate Voltage Source Names
+for rowIdx = 1:N
+    elemName = sprintf('%s%d', iCompName, fPairFunction(rowIdx, 0));
+    if rowConnVec(rowIdx) == 2
+        posNode = sprintf('%s_%d', strcat(rowTag, connNodeName), rowIdx);
+    else
+        posNode = sprintf('%s_%d', iCompName, fPairFunction(rowIdx, 0));
+    end
+    negNode = '0';
+    value = Is(rowIdx, 1); %is(rowIdx);
+    text = sprintf('%s %s %s %f\n', elemName, posNode, negNode, -value);
+    fprintf(fileID, text);
+end
 
 %% Write Row Ammeter Resistances
 %%Comment: Row Ammeter Resistances
@@ -118,7 +145,7 @@ colIdx = 1;
 compName = res.alias(strcmp(res.tag, rarCompName));
 for rowIdx = 1:N
     elemName = sprintf("%s%d", compName, rowIdx);
-    posNode = sprintf('%s_%d', vCompName, rowIdx);
+    posNode = sprintf('%s_%d', strcat(rowTag, connNodeName), rowIdx);
     negNode = sprintf('%s%s%d', memRCompName, rowTag, fPairFunction(rowIdx, colIdx));
     text = sprintf('%s %s %s %.12f\n', elemName, posNode, negNode, R_Amm);
     fprintf(fileID, text);
@@ -202,12 +229,46 @@ rowIdx = N+1;
 for colIdx = 1:N
     elemName = sprintf('%s%d', compName, colIdx);
     posNode = sprintf('%s%s%d', memRCompName, colTag, fPairFunction(rowIdx, colIdx));
-    if strcmp(scheme, '1')
-        negNode = '0';
-    elseif strcmp(scheme, '2')
-        negNode = sprintf('%s%s%d', carCompName, colTag, fPairFunction(rowIdx+1, colIdx));
-    end
+    negNode = sprintf('%s_%d', strcat(colTag, connNodeName), colIdx);
     text = sprintf('%s %s %s %.12f\n', elemName, posNode, negNode, R_Amm);
+    fprintf(fileID, text);
+end
+
+%% Write Column Voltage Sources into file
+%%Comment: Column Voltage Sources
+fprintf(fileID, "\n\n*Column Voltage Sources\n");
+
+%%Generate Voltage Source Names
+for colIdx = 1:N
+    elemName = sprintf('%s%d', vCompName, fPairFunction(0, colIdx));
+    if colConnVec(colIdx) == 1
+        posNode = sprintf('%s_%d', strcat(colTag, connNodeName), colIdx);
+    else
+        posNode = sprintf('%s_%d', vCompName, fPairFunction(0, colIdx));
+    end
+    negNode = '0';
+    value = X_(end, colIdx); %vs(N+rowIdx);
+    text = sprintf('%s %s %s %f\n', elemName, posNode, negNode, value);
+    fprintf(fileID, text);
+    
+    X.nodename(end, colIdx) = lower(string(posNode));
+end
+
+%% Write Column Current Sources into file
+%%Comment: Column Current Sources
+fprintf(fileID, "\n\n*Column Current Sources\n");
+
+%%Generate Current Source Names
+for colIdx = 1:N
+    elemName = sprintf('%s%d', iCompName, fPairFunction(0, colIdx));
+    if colConnVec(colIdx) == 2
+        posNode = sprintf('%s_%d', strcat(colTag, connNodeName), colIdx);
+    else
+        posNode = sprintf('%s_%d', iCompName, fPairFunction(0, colIdx));
+    end
+    negNode = '0';
+    value = Io(end, colIdx); %is(N+rowIdx);
+    text = sprintf('%s %s %s %f\n', elemName, posNode, negNode, -value);
     fprintf(fileID, text);
 end
 

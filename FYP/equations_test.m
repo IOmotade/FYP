@@ -119,7 +119,7 @@ U = fUTriangularMatrix(N);
 A = In - J;
 %define signals
 %voltages
-vs = 5; vs = repmat(vs, [N, 1]); vs(1:2, :) = 0
+vs = 5; vs = repmat(vs, [N, 1]);
 Vs = [vs zeros(N, N-1)];
 vc = zeros(N, 1);
 Vc = ones(N, 1)*transpose(vc);
@@ -160,11 +160,11 @@ while ((~hasConverged) && (iter<iter_limit))||(iter<5)
     hasConverged = fHasConverged([Io Vo], [Io_prev Vo_prev], 1e-1);
     [Io Vo];
 end
-total_iter = total_iter + iter
+total_iter = total_iter + iter;
 %display results
-total_iter_ = fUnits(total_iter, 'iterations')
-Vo_ = fUnits(Vo, 'V')
-Io_prev_ = fUnits(Io_prev, 'A')
+total_iter_ = fUnits(total_iter, 'iterations');
+Vo_ = fUnits(Vo, 'V');
+Io_prev_ = fUnits(Io_prev, 'A');
 Io_ = fUnits(Io, 'A')
 
 %% second model version 4
