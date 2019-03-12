@@ -3,7 +3,7 @@ Circuit: *mat_array.cir
 
 
 Circuit: *mat_array.cir
-Date: Wed Mar  6 23:35:27  2019
+Date: Tue Mar 12 02:46:19  2019
 
 
 Operating point information:
@@ -13,49 +13,55 @@ Operating point information:
 	i_9	0.000000e+00
 	i_5	0.000000e+00
 	i_2	0.000000e+00
+	v_9	0.000000e+00
+	v_5	0.000000e+00
+	v_2	0.000000e+00
 	colc_3	0.000000e+00
 	colc_2	0.000000e+00
 	colc_1	0.000000e+00
-	memrcol31	8.510003e-13
-	memrcol23	9.101760e-13
-	memrcol16	1.032707e-12
-	memrrow32	4.022693e+00
-	memrrow25	4.151567e+00
-	memrrow19	4.213563e+00
-	memrcol24	8.510003e-01
-	memrrow24	4.022693e+00
-	memrcol17	9.101760e-01
-	memrrow17	4.339862e+00
-	memrcol11	1.032707e+00
-	memrcol18	1.384831e+00
-	memrrow18	4.151567e+00
-	memrcol12	1.477383e+00
-	memrrow12	4.428241e+00
-	memrcol7	1.668686e+00
-	memrcol13	1.641989e+00
-	memrrow13	4.213563e+00
-	memrcol8	1.749505e+00
-	memrrow8	4.470721e+00
-	memrcol4	1.971532e+00
-	memrrow11	5.000000e+00
-	memrrow7	5.000000e+00
-	memrrow4	5.000000e+00
-	i_6	0.000000e+00
-	i_3	0.000000e+00
-	i_1	0.000000e+00
-	rowc_3	5.000000e+00
-	rowc_2	5.000000e+00
-	rowc_1	5.000000e+00
+	memrcol31	0.000000e+00
+	memrcol23	0.000000e+00
+	memrcol16	0.000000e+00
+	memrrow32	0.000000e+00
+	memrrow25	0.000000e+00
+	memrrow19	0.000000e+00
+	memrcol24	0.000000e+00
+	memrrow24	0.000000e+00
+	memrcol17	0.000000e+00
+	memrrow17	0.000000e+00
+	memrcol11	0.000000e+00
+	memrcol18	0.000000e+00
+	memrrow18	0.000000e+00
+	memrcol12	0.000000e+00
+	memrrow12	0.000000e+00
+	memrcol7	0.000000e+00
+	memrcol13	0.000000e+00
+	memrrow13	0.000000e+00
+	memrcol8	0.000000e+00
+	memrrow8	0.000000e+00
+	memrcol4	0.000000e+00
+	memrrow11	0.000000e+00
+	rowc_3	0.000000e+00
+	memrrow7	0.000000e+00
+	rowc_2	0.000000e+00
+	memrrow4	0.000000e+00
+	rowc_1	0.000000e+00
+	i_6	1.000000e+00
+	i_3	1.000000e+00
+	i_1	1.000000e+00
+	v_6	5.000000e+00
+	v_3	5.000000e+00
+	v_1	5.000000e+00
 
 	Source	Current
 	------	-------
 
-	v1#branch	-8.30650e-04
-	v3#branch	-9.04083e-04
-	v6#branch	-1.05762e-03
-	v2#branch	1.032707e-03
-	v5#branch	9.101760e-04
-	v9#branch	8.510003e-04
+	v1#branch	0.000000e+00
+	v3#branch	0.000000e+00
+	v6#branch	0.000000e+00
+	v2#branch	0.000000e+00
+	v5#branch	0.000000e+00
+	v9#branch	0.000000e+00
 
  Resistor models (Simple linear resistor)
       model                     R
@@ -75,107 +81,107 @@ Operating point information:
 
  Isource: Independent current source
      device                    i6                    i3                    i1
-         dc                    -0                    -0                    -0
+         dc                    -1                    -1                    -1
       acmag                     0                     0                     0
-          v                     0                     0                     0
-          p                    -0                    -0                    -0
+          v                     1                     1                     1
+          p                    -1                    -1                    -1
 
  Resistor: Simple linear resistor
      device                   r53                   r52                   r51
       model                     R                     R                     R
  resistance                 1e-09                 1e-09                 1e-09
-          i              0.000851           0.000910176            0.00103271
-          p           7.24202e-16            8.2842e-16           1.06648e-15
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Resistor: Simple linear resistor
      device                  r324                  r317                  r311
       model                     R                     R                     R
  resistance                  1000                  1000                  1000
-          i              0.000851           0.000910176            0.00103271
-          p           0.000724202            0.00082842            0.00106648
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Resistor: Simple linear resistor
      device                  r318                  r312                   r37
       model                     R                     R                     R
  resistance                  1000                  1000                  1000
-          i           0.000533831           0.000567207           0.000635978
-          p           0.000284976           0.000321724           0.000404468
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Resistor: Simple linear resistor
      device                  r313                   r38                   r34
       model                     R                     R                     R
  resistance                  1000                  1000                  1000
-          i           0.000257157           0.000272122           0.000302847
-          p             6.613e-05           7.40502e-05           9.17162e-05
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Resistor: Simple linear resistor
      device                  r224                  r217                  r211
       model                     R                     R                     R
  resistance                  1000                  1000                  1000
-          i                     0           0.000317169           0.000660138
-          p                     0           0.000100596           0.000435782
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Resistor: Simple linear resistor
      device                  r218                  r212                   r27
       model                     R                     R                     R
  resistance                  1000                  1000                  1000
-          i                     0           0.000276674           0.000571759
-          p                     0           7.65483e-05           0.000326909
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Resistor: Simple linear resistor
      device                  r213                   r28                   r24
       model                     R                     R                     R
  resistance                  1000                  1000                  1000
-          i                     0           0.000257157           0.000529279
-          p                     0             6.613e-05           0.000280136
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Resistor: Simple linear resistor
      device                  r124                  r117                  r111
       model                     R                     R                     R
  resistance                 10000                 10000                 10000
-          i           0.000317169           0.000342969           0.000396729
-          p            0.00100596            0.00117627            0.00157394
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Resistor: Simple linear resistor
      device                  r118                  r112                   r17
       model                     R                     R                     R
  resistance                 10000                 10000                 10000
-          i           0.000276674           0.000295086           0.000333131
-          p           0.000765483           0.000870756            0.00110977
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Resistor: Simple linear resistor
      device                  r113                   r18                   r14
       model                     R                     R                     R
  resistance                 10000                 10000                 10000
-          i           0.000257157           0.000272122           0.000302847
-          p             0.0006613           0.000740502           0.000917162
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Resistor: Simple linear resistor
      device                   r43                   r42                   r41
       model                     R                     R                     R
  resistance                 1e-09                 1e-09                 1e-09
-          i            0.00105782           0.000904166           0.000831335
-          p           1.11898e-15           8.17515e-16           6.91118e-16
+          i                     0                     0                     0
+          p                     0                     0                     0
 
  Vsource: Independent voltage source
      device                    v9                    v5                    v2
          dc                     0                     0                     0
       acmag                     0                     0                     0
-          i              0.000851           0.000910176            0.00103271
+          i                     0                     0                     0
           p                     0                     0                     0
 
  Vsource: Independent voltage source
      device                    v6                    v3                    v1
          dc                     5                     5                     5
       acmag                     0                     0                     0
-          i           -0.00105762          -0.000904083           -0.00083065
-          p           -0.00528812           -0.00452042           -0.00415325
+          i                     0                     0                     0
+          p                     0                     0                     0
 
-CPU time since last call: 0.076 seconds.
+CPU time since last call: 0.037 seconds.
 
-Total CPU time: 0.076 seconds.
+Total CPU time: 0.037 seconds.
 
-MacSpice memory reserved: 11534336,
-MacSpice memory peak use:   378880,
-MacSpice memory in use:     273504.
+MacSpice memory reserved: 20971520,
+MacSpice memory peak use:   432624,
+MacSpice memory in use:     277008.
 

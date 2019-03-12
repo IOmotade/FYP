@@ -63,10 +63,10 @@ disp("Finished")
 timeCircuit = Circuit;
 Circuit = fFrequencyDomain(timeCircuit);
 fUnits(timeCircuit.IO.value, 'A')
-return
+% return
 %% Extract Data & Plot Spectrum
-timeVal = fGetFieldValues(Circuit.TimeDom, 'X');
-
+timeVal = fGetFieldValues(Circuit.TimeDom, 'X', 'value')
+return
 figure;
 lgnd = repmat(" ", N, 1);
 lgdIdx = 1;

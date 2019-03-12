@@ -2,15 +2,15 @@
 
 
 *Row Voltage Sources
-V1 RowC_1 0 5.000000
-V3 RowC_2 0 5.000000
-V6 RowC_3 0 5.000000
+V1 V_1 0 5.000000
+V3 V_3 0 5.000000
+V6 V_6 0 5.000000
 
 
 *Row Current Sources
-I1 I_1 0 -0.000000
-I3 I_3 0 -0.000000
-I6 I_6 0 -0.000000
+I1 I_1 0 -1.000000
+I3 I_3 0 -1.000000
+I6 I_6 0 -1.000000
 
 
 *Row 'Ammeter' Resistances
@@ -62,9 +62,9 @@ R53 MemRCol31 ColC_3 0.000000001000
 
 
 *Column Voltage Sources
-V2 ColC_1 0 0.000000
-V5 ColC_2 0 0.000000
-V9 ColC_3 0 0.000000
+V2 V_2 0 0.000000
+V5 V_5 0 0.000000
+V9 V_9 0 0.000000
 
 
 *Column Current Sources
