@@ -1,13 +1,13 @@
 %% Circuit System vs Time
-rst
+% rst
 addpath(genpath('../FYP/Functions/'))
 [fig_az, fig_el] = deal(145, 30);
 
 %% Setup Circuit System
-N = 32;
-MemR  = abs(10e3*ones(N) + 0e3*randn(N));
-LRowR = abs(1e3*ones(N) + 0e3*randn(N));
-LColR = abs(1e3*ones(N) + 0e3*randn(N));
+N = 4;
+MemR = abs(100e3*ones(N) + 0e3*randn(N));
+LRowR = abs(1e0*ones(N) + 0e3*randn(N));
+LColR = abs(1e0*ones(N) + 0e3*randn(N));
 
 vs_mag = [5, zeros(1, N-1)]';%Source Voltage Magnitude
 vs_idx = 3;
@@ -53,7 +53,7 @@ fsource = base_freq*(2.^((1:N)-1))';
 %% Sim Setup
 % vs =
 vs = vs_mag.*square(2*pi*fsource*t);
-Circuit = fMacSpiceSim(N, vs_, is_, C_, MemR, LRowR, LColR);
+% Circuit = fMacSpiceSim(N, vs_, is_, C_, MemR, LRowR, LColR);
 Circuit = repmat(Circuit, [nsamp, 1]);
 freqVal = zeros(size(t));
 
@@ -82,6 +82,7 @@ Circuit = fFrequencyDomain(timeCircuit);
 
 %% Extract Data & Plot Spectrum
 timeVal = fGetFieldValues(Circuit.TimeDom, 'VO', 'value');
+squeeze(timeVal(1, :, :))
 % return
 
 figure;
