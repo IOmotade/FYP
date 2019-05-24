@@ -168,14 +168,14 @@ Io_prev_ = fUnits(Io_prev, 'A');
 Io_ = fUnits(Io, 'A')
 
 %% second model version 4
-rst
+% rst
 N = 3;
 %define array
 R = 10e3; R = repmat(R, [N, N]); %R(3, 3) = 2.5e3;% R(3, 2) = 5e3; R(3, 3) = 30e3;
 % R = 10e3*abs(randn(size(R)))
 G = 1./R;
 % Rc = R; Rr = R;
-Rc = 1e3*ones(size(R)); Rr = 1e3*ones(size(R));
+Rc = 1e3*ones(size(R)); Rr = 1e0*ones(size(R));
 %define operation matrices
 In = eye(N);
 J = fShiftingMatrix(N);
@@ -183,7 +183,7 @@ U = fUTriangularMatrix(N);
 A = In - J;
 %define signals
 %voltages
-vs = 5; vs = repmat(vs, [N, 1]);
+vs = [5 0 0]';% vs = repmat(vs, [N, 1]);
 Vs = [vs zeros(N, N-1)];
 vc = zeros(N, 1);
 Vc = ones(N, 1)*transpose(vc);

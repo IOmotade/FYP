@@ -4,7 +4,7 @@ addpath(genpath('../FYP/Functions/'))
 [fig_az, fig_el] = deal(145, 30);
 
 %% Setup Circuit System
-N = 32;
+N = 3;
 MemR  = abs(10e3*ones(N) + 0e3*randn(N));
 LRowR = abs(1e3*ones(N) + 0e3*randn(N));
 LColR = abs(1e3*ones(N) + 0e3*randn(N));
@@ -24,22 +24,18 @@ C = ones(2*N, 1);%Connection Matrix
 %     zeros(N, 1)];
 
 C_ = C;
-vs_ = zeros(size(C)); vs_(1) = 5;
-is_ = zeros(size(C)); is_(1) = 0;
+s_ = zeros(size(C)); s_(1) = 5;
 
 if N == 3
-    vs_ = [5 0 0 0 0 0].';
-    is_ = [0 0 0 0 0 0].';
-    C_  = [1 1 1 1 1 1].';
+    s_  = [5 5 5 0 0 0].';
+    C_  = [0 0 0 0 0 0].';
 end
 
 if N == 8
-    vs_ = [5 0 0 0 0 0 0 0 ...
-        0 0 0 0 0 0 0 0].';
-    is_ = [0 0 0 0 0 0 0 0 ...
-        0 0 0 0 0 0 0 0].';
-    C_  = [1 0 0 0 0 0 0 0 ...
-        0 0 0 0 0 0 0 0].';
+    s_  = [5 0 0 0 0 0 0 0 ...
+           0 0 0 0 0 0 0 0].';
+    C_  = [0 0 0 0 0 0 0 0 ...
+           0 0 0 0 0 0 0 0].';
 end
 
 %% Setup time samples
@@ -51,9 +47,8 @@ t = 0:tsamp:(nsamp-1)*tsamp;
 fsource = base_freq*(2.^((1:N)-1))';
 
 %% Sim Setup
-% vs =
 vs = vs_mag.*square(2*pi*fsource*t);
-Circuit = fMacSpiceSim(N, vs_, is_, C_, MemR, LRowR, LColR);
+Circuit = fMacSpiceSim(N, s_, C_, MemR, LRowR, LColR);
 Circuit = repmat(Circuit, [nsamp, 1]);
 freqVal = zeros(size(t));
 
@@ -77,7 +72,7 @@ disp("Finished")
 
 timeCircuit = Circuit;
 Circuit = fFrequencyDomain(timeCircuit);
-% fUnits(timeCircuit.IO.value, 'A')
+fUnits(timeCircuit.IO.value, 'A')
 % return
 
 %% Extract Data & Plot Spectrum

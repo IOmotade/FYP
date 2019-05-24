@@ -103,11 +103,11 @@ fprintf(fileID, "\n\n*Row Voltage Sources\n");
 
 %%Generate Voltage Source Names
 for rowIdx = 1:N
-    elemName = sprintf('%s%d', vCompName, fPairFunction(rowIdx, 0));
-    if rowConnVec(rowIdx) == 1
+    elemName = sprintf('%s%d', vCompName, fCantorPairFunction(rowIdx, 0));
+    if rowConnVec(rowIdx) == 0
         posNode = sprintf('%s_%d', strcat(rowTag, connNodeName), rowIdx);
     else
-        posNode = sprintf('%s_%d', vCompName, fPairFunction(rowIdx, 0));
+        posNode = sprintf('%s_%d', vCompName, fCantorPairFunction(rowIdx, 0));
     end
     negNode = '0';
     value = Vs(rowIdx, 1); %vs(rowIdx);
@@ -122,13 +122,13 @@ VS.nodename(:, 2:end) = lower(string(negNode));
 %%Comment: Row Current Sources
 fprintf(fileID, "\n\n*Row Current Sources\n");
 
-%%Generate Voltage Source Names
+%%Generate Current Source Names
 for rowIdx = 1:N
-    elemName = sprintf('%s%d', iCompName, fPairFunction(rowIdx, 0));
-    if rowConnVec(rowIdx) == 2
+    elemName = sprintf('%s%d', iCompName, fCantorPairFunction(rowIdx, 0));
+    if rowConnVec(rowIdx) == 1
         posNode = sprintf('%s_%d', strcat(rowTag, connNodeName), rowIdx);
     else
-        posNode = sprintf('%s_%d', iCompName, fPairFunction(rowIdx, 0));
+        posNode = sprintf('%s_%d', iCompName, fCantorPairFunction(rowIdx, 0));
     end
     negNode = '0';
     value = Is(rowIdx, 1); %is(rowIdx);
@@ -146,7 +146,7 @@ compName = res.alias(strcmp(res.tag, rarCompName));
 for rowIdx = 1:N
     elemName = sprintf("%s%d", compName, rowIdx);
     posNode = sprintf('%s_%d', strcat(rowTag, connNodeName), rowIdx);
-    negNode = sprintf('%s%s%d', memRCompName, rowTag, fPairFunction(rowIdx, colIdx));
+    negNode = sprintf('%s%s%d', memRCompName, rowTag, fCantorPairFunction(rowIdx, colIdx));
     text = sprintf('%s %s %s %.12f\n', elemName, posNode, negNode, R_Amm);
     fprintf(fileID, text);
     
@@ -161,9 +161,9 @@ fprintf(fileID, "\n\n*Memristor Resistances\n");
 compName = res.alias(strcmp(res.tag, memRCompName));
 for rowIdx = 1:N
     for colIdx = 1:N
-        elemName = sprintf('%s%d', compName, fPairFunction(rowIdx, colIdx));
-        posNode = sprintf('%s%s%d', memRCompName, rowTag, fPairFunction(rowIdx, colIdx));
-        negNode = sprintf('%s%s%d', memRCompName, colTag, fPairFunction(rowIdx, colIdx));
+        elemName = sprintf('%s%d', compName, fCantorPairFunction(rowIdx, colIdx));
+        posNode = sprintf('%s%s%d', memRCompName, rowTag, fCantorPairFunction(rowIdx, colIdx));
+        negNode = sprintf('%s%s%d', memRCompName, colTag, fCantorPairFunction(rowIdx, colIdx));
         value = MemR(rowIdx, colIdx);
         text = sprintf('%s %s %s %f\n', elemName, posNode, negNode, value);
         fprintf(fileID, text);
@@ -181,9 +181,9 @@ fprintf(fileID, "\n\n*Line Row Resistances\n");
 compName = res.alias(strcmp(res.tag, lRRCompName));
 for rowIdx = 1:N
     for colIdx = 1:N
-        elemName = sprintf('%s%d', compName, fPairFunction(rowIdx, colIdx));
-        posNode = sprintf('%s%s%d', memRCompName, rowTag, fPairFunction(rowIdx, colIdx));
-        negNode = sprintf('%s%s%d', memRCompName, rowTag, fPairFunction(rowIdx, colIdx+1));
+        elemName = sprintf('%s%d', compName, fCantorPairFunction(rowIdx, colIdx));
+        posNode = sprintf('%s%s%d', memRCompName, rowTag, fCantorPairFunction(rowIdx, colIdx));
+        negNode = sprintf('%s%s%d', memRCompName, rowTag, fCantorPairFunction(rowIdx, colIdx+1));
         value = LRowR(rowIdx, colIdx);
         text = sprintf('%s %s %s %f\n', elemName, posNode, negNode, value);
         fprintf(fileID, text);
@@ -205,9 +205,9 @@ fprintf(fileID, "\n\n*Line Column Resistances\n");
 compName = res.alias(strcmp(res.tag, lCRCompName));
 for rowIdx = 1:N
     for colIdx = 1:N
-        elemName = sprintf('%s%d', compName, fPairFunction(rowIdx, colIdx));
-        posNode = sprintf('%s%s%d', memRCompName, colTag, fPairFunction(rowIdx, colIdx));
-        negNode = sprintf('%s%s%d', memRCompName, colTag, fPairFunction(rowIdx+1, colIdx));
+        elemName = sprintf('%s%d', compName, fCantorPairFunction(rowIdx, colIdx));
+        posNode = sprintf('%s%s%d', memRCompName, colTag, fCantorPairFunction(rowIdx, colIdx));
+        negNode = sprintf('%s%s%d', memRCompName, colTag, fCantorPairFunction(rowIdx+1, colIdx));
         value = LColR(rowIdx, colIdx);
         text = sprintf('%s %s %s %f\n', elemName, posNode, negNode, value);
         fprintf(fileID, text);
@@ -228,7 +228,7 @@ compName = res.alias(strcmp(res.tag, carCompName));
 rowIdx = N+1;
 for colIdx = 1:N
     elemName = sprintf('%s%d', compName, colIdx);
-    posNode = sprintf('%s%s%d', memRCompName, colTag, fPairFunction(rowIdx, colIdx));
+    posNode = sprintf('%s%s%d', memRCompName, colTag, fCantorPairFunction(rowIdx, colIdx));
     negNode = sprintf('%s_%d', strcat(colTag, connNodeName), colIdx);
     text = sprintf('%s %s %s %.12f\n', elemName, posNode, negNode, R_Amm);
     fprintf(fileID, text);
@@ -240,11 +240,11 @@ fprintf(fileID, "\n\n*Column Voltage Sources\n");
 
 %%Generate Voltage Source Names
 for colIdx = 1:N
-    elemName = sprintf('%s%d', vCompName, fPairFunction(0, colIdx));
-    if colConnVec(colIdx) == 1
+    elemName = sprintf('%s%d', vCompName, fCantorPairFunction(0, colIdx));
+    if colConnVec(colIdx) == 0
         posNode = sprintf('%s_%d', strcat(colTag, connNodeName), colIdx);
     else
-        posNode = sprintf('%s_%d', vCompName, fPairFunction(0, colIdx));
+        posNode = sprintf('%s_%d', vCompName, fCantorPairFunction(0, colIdx));
     end
     negNode = '0';
     value = X_(end, colIdx); %vs(N+rowIdx);
@@ -260,11 +260,11 @@ fprintf(fileID, "\n\n*Column Current Sources\n");
 
 %%Generate Current Source Names
 for colIdx = 1:N
-    elemName = sprintf('%s%d', iCompName, fPairFunction(0, colIdx));
-    if colConnVec(colIdx) == 2
+    elemName = sprintf('%s%d', iCompName, fCantorPairFunction(0, colIdx));
+    if colConnVec(colIdx) == 1
         posNode = sprintf('%s_%d', strcat(colTag, connNodeName), colIdx);
     else
-        posNode = sprintf('%s_%d', iCompName, fPairFunction(0, colIdx));
+        posNode = sprintf('%s_%d', iCompName, fCantorPairFunction(0, colIdx));
     end
     negNode = '0';
     value = Io(end, colIdx); %is(N+rowIdx);
@@ -284,6 +284,7 @@ fprintf(fileID, '.end\n');
 fclose(fileID);
 
 %% Collate all circuit information into one structure
+Circuit.N = N;
 Circuit.VO = VO;
 Circuit.VI = VI;
 Circuit.IO = IO;
@@ -295,9 +296,4 @@ Circuit.Memristor = Memristor;
 Circuit.RowLineResistance = RowLineResistance;
 Circuit.ColLineResistance = ColLineResistance;
 
-end
-
-function f = fPairFunction(a, b)
-%Cantor Pairing Function
-f = (1/2)*(a+b)*(a+b+1) + b;
 end

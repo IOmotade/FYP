@@ -15,11 +15,11 @@ for idx = 1:N
         %     val(tIdx) = Circuit(tIdx).X.value(end, 1);
     end
     
-    hft = haar_fft(val);
+    hft = fHaarT(val);
     norm_freq = (((1:length(hft))-1)/length(hft));%*fsamp;
     % norm_freq(abs(hft)==max(abs(hft)))*fsamp
     hft(abs(hft)<max(abs(hft))/1.5) = 0; %filter
-    hift = haar_ifft(hft);
+    hift = fInvHaarT(hft);
     
     %Extract frequency components
     val_freqcomp = zeros(1, N);
@@ -45,11 +45,11 @@ for idx = 1:N
         %     val(tIdx) = Circuit(tIdx).X.value(end, 1);
     end
     
-    hft = haar_fft(val);
+    hft = fHaarT(val);
     norm_freq = (((1:length(hft))-1)/length(hft));%*fsamp;
     % norm_freq(abs(hft)==max(abs(hft)))*fsamp
 %     hft(abs(hft)<max(abs(hft))/1.5) = 0; %filter
-    hift = haar_ifft(hft);
+    hift = fInvHaarT(hft);
     
     %Extract frequency components
     val_freqcomp = zeros(1, N);
