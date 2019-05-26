@@ -1,3 +1,14 @@
+% Omotade Iluromi, GROUP (EE4), 2019, Imperial College.
+% 26/05/2019
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Gives the Inverse Haar Transform of hft
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inputs
+% hft (1xN Double) = haar transform of a signal
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Outputs
+% h (1xN Double) = inverse haar transform/time series values of signal
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function h = fInvHaarT(hft)
 
 % if(mod(length(hft), 2)==1)

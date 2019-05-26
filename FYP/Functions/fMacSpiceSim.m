@@ -1,6 +1,27 @@
-%% Full-Simulation
+% Call cases:
+% -----------
 % function Circuit = fMacSpiceSim(N, vs, is, connVec, MemR, LRowR, LColR)
 % function Circuit = fMacSpiceSim(N, s, connVec, MemR, LRowR, LColR)
+%
+% Omotade Iluromi, GROUP (EE4), 2019, Imperial College.
+% 26/05/2019
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Carries out a macspice simulation for a memristor array with parasitic
+% line resistances
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inputs
+% N (Integer) = Order of memristor array i.e. NxN array
+% s (Nx1 or 2Nx1 Double) = General Bias Source/Sink values
+% vs (Nx1 or 2Nx1 Double) = Voltage Source/Sink values
+% is (Nx1 or 2Nx1 Double) = Current Source/Sink values
+% C (Nx1 or 2Nx1 Integer) = Connection Vector (describing whether nodes are connected to is or vs(0/1))
+% MemR (NxN Double) = Memristor array values
+% LRowR (NxN Double) = Line Row Resistances array values
+% LColR (NxN Double) = Line Column Resistances array values
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Outputs
+% Circuit (Circuit) = Simulation circuit set-up
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function Circuit = fMacSpiceSim(N, varargin)
 %% Set-up
 [vs, is, connVec, MemR, LRowR, LColR] = fSetup(N, varargin);

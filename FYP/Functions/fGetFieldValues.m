@@ -1,3 +1,17 @@
+% Omotade Iluromi, GROUP (EE4), 2019, Imperial College.
+% 26/05/2019
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Converts a simulated circuit from the time domain to frequency domain
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inputs
+% structure (Struct) = Structure object with desired field
+% varargin (1xN String) = List of fields till desired fields e.g.
+% X.a.b.c => fx(X, 'a', 'b', 'c')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Outputs
+% val (AxBxCxD Type) = Matrix containing entries of desired field in
+% structure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function val = fGetFieldValues(structure, varargin)
 
 [rowSize, colSize] = size(structure);

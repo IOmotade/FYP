@@ -1,3 +1,18 @@
+% Omotade Iluromi, GROUP (EE4), 2019, Imperial College.
+% 26/05/2019
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Generate readable format for measured values along with units and
+% prefixes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inputs
+% x (RxC Double) = Values
+% unit (String) = Units of Measurement
+% nd (Integer) = Number of decimal places for output
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Outputs
+% z (RxC String) = Values of x with appropriate S.I. prefixes and defined
+% unit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function z = fUnits(x, unit, nd)
 if ~exist('unit', 'var')
     unit = '';
@@ -33,7 +48,6 @@ idxPwr = round(idxPwr);
 %% Convert to SI units
 siPwr = 3*floor(idxPwr/3);
 xPwr = xPwr+idxPwr-siPwr;
-x = 10^xPwr;
 prefixIdx = (siPwr == prefix.pwr);
 prfx = prefix.p(prefixIdx);
 

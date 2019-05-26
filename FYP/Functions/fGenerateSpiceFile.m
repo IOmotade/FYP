@@ -1,3 +1,23 @@
+% Omotade Iluromi, GROUP (EE4), 2019, Imperial College.
+% 26/05/2019
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Generate Spice files for use in simulations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inputs
+% type (String) = Either "Up" or "Down" to represent current flow path
+% N (Integer) = Order of memristor array i.e. NxN array
+% vs (2Nx1 Double) = Voltage Source/Sink values
+% is (2Nx1 Double) = Current Source/Sink values
+% C (2Nx1) = Connection Vector (describing whether nodes are connected to is or vs(0/1))
+% MemR (NxN Double) = Memristor array values
+% LRowR (NxN Double) = Line Row Resistances array values
+% LColR (NxN Double) = Line Column Resistances array values
+% fileLoc (String) = Full Absolute/Relative Filepath and Name
+% spiceDir (String) = Any additional spice directives
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Outputs
+% Circuit (Circuit) = Simulation circuit set-up
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function Circuit = fGenerateSpiceFile(N, vs, is, C, MemR, LRowR, LColR, fileLoc, spiceDir)
 if length(vs)~=(2*N)
     fprintf('Dimensions do not match\n');

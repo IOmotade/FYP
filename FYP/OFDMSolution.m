@@ -1,5 +1,5 @@
 %%
-% load('Circuitfsamp10kHz_nopara.mat')
+load('SimData/Circuitfsamp10kHz_nopara.mat')
 %Voltage
 V = zeros([N N]);
 I = zeros([N N]);
