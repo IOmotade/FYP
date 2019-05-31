@@ -1,5 +1,6 @@
 %%
-load('SimData/Circuitfsamp10kHz_nopara.mat')
+% load('SimData/Circuitfsamp10kHz_nopara.mat')
+load('tmp')
 %Voltage
 V = zeros([N N]);
 I = zeros([N N]);
@@ -19,7 +20,7 @@ for idx = 1:N
     norm_freq = (((1:length(hft))-1)/length(hft));%*fsamp;
     % norm_freq(abs(hft)==max(abs(hft)))*fsamp
     hft(abs(hft)<max(abs(hft))/1.5) = 0; %filter
-    hift = fInvHaarT(hft);
+%     hift = fInvHaarT(hft);
     
     %Extract frequency components
     val_freqcomp = zeros(1, N);
@@ -47,9 +48,9 @@ for idx = 1:N
     
     hft = fHaarT(val);
     norm_freq = (((1:length(hft))-1)/length(hft));%*fsamp;
-    % norm_freq(abs(hft)==max(abs(hft)))*fsamp
+%     norm_freq(abs(hft)==max(abs(hft)))*fsamp
 %     hft(abs(hft)<max(abs(hft))/1.5) = 0; %filter
-    hift = fInvHaarT(hft);
+%     hift = fInvHaarT(hft);
     
     %Extract frequency components
     val_freqcomp = zeros(1, N);

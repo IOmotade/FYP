@@ -14,12 +14,12 @@ vs_mag = 5;%Source Voltage Magnitude
 % fUnits(Circuit.IO.value, 'A')
 
 %% Setup time samples
-fsamp = 100e3; tsamp = 1/fsamp;
 base_freq = 100;
-nsamp = 10*(fsamp/base_freq);
+fsource = base_freq*(2.^((1:N)-1))';
+fsamp = 2*max(fsource); tsamp = 1/fsamp;
+nsamp = (fsamp/base_freq);
 t = 0:tsamp:(nsamp-1)*tsamp;
 
-fsource = base_freq*(2.^((1:N)-1))';
 %% Sim Setup
 % vs =
 vs = vs_mag*square(2*pi*fsource*t);
@@ -45,7 +45,8 @@ disp("Finished")
 play_alarm()
 
 %% Save Result
-% save('Circuitfsamp100kHz_para_non_uniform_1')
+save('tmp')
+return
 
 %% Load Result
 % load('SimData/Circuitfsamp10kHz_nopara.mat')

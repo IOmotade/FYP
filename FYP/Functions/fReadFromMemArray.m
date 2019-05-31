@@ -26,12 +26,14 @@ else
 end
 
 %% Read possible bits to cut down on processing time in fReadFromMemArray
-filename = sprintf('posBits_numBitspRes_%d.txt', numBitspRes);
+filename = sprintf('Functions/EncodingRules/posBits_numBitspRes_%d.txt', numBitspRes);
 fid = fopen(filename, 'r');
 if fid~=-1
     posBits = reshape(fread(fid, 'uint8=>char'), [], numBitspRes);
+    fclose(fid);
 else
     %% Generate bit combinations and mapping
+    warning("Generating Gray Code Encoding!");
     posBits = (1:2^numBitspRes)-1; %Stored Bit Words
     posBits = fBin2Gray(dec2bin(posBits));
 end

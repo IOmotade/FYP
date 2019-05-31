@@ -32,15 +32,16 @@ posBits = fBin2Gray(dec2bin(posBits));
 posSymbs = bin2dec(posBits);
 
 %% Save possible bits to cut down on processing time in fReadFromMemArray
-filename = sprintf('posBits_numBitspRes_%d.txt', numBitspRes);
+filename = sprintf('Functions/EncodingRules/posBits_numBitspRes_%d.txt', numBitspRes);
 fid = fopen(filename, 'w');
 fwrite(fid, posBits);
+fclose(fid);
 
 %% Depending on Encoding Rule Used
 if ~exist('ruleNum', 'var')
     %Rule 1
     %rule1(numBitspRes, MemRLowLim, MemRUpLim);
-    ruleNum = 1;
+    %ruleNum = 1;
     if length(var)==2
         posMemRValues = rule1(numBitspRes, var{1}, var{2});
     else

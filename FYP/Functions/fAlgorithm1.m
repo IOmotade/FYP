@@ -62,7 +62,8 @@ t = 0:tsamp:(nsamp-1)*tsamp;
 MemR = storedMemR;
 
 vs_mag = 5;
-vs = vs_mag*square(2*pi*fsource*t);
+% vs = vs_mag*square(2*pi*fsource*t);
+vs = fVoltageSourceSignals(N, vs_mag, nsamp);
 Circuit = fMacSpiceSim(N, vs(:, 1), MemR, LRowR, LColR);
 Circuit = repmat(Circuit, [nsamp, 1]);
 

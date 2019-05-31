@@ -11,6 +11,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function h = fInvHaarT(hft)
 
+h = version2(hft);
+
+end
+
+%{
+function h = version1(hft)
+
 % if(mod(length(hft), 2)==1)
 %     hft = [hft, 0];
 % end
@@ -24,4 +31,20 @@ for idx = 1:length(hft)
 %     title("Current Figure")
 end
 % h = h/2;
+
+end
+%}
+
+function h = version2(hft)
+
+if(mod(length(hft), 2)==1)
+    hft = [hft, 0];
+end
+
+N = length(hft);
+
+H = fHaarTransform(N);
+
+h = (transpose(H)*hft(:))*sqrt(N);
+
 end

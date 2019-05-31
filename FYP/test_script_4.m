@@ -4,9 +4,9 @@ addpath(genpath('../FYP/Functions/'))
 rst
 
 %% Setup Circuit System
-N = 4;
+N = 3;
 % MemR = 10e3*ones(N);
-LR = 10e3;
+LR = 1e-3;
 LRowR = abs(LR*ones(N)  + 0e3*randn(N));
 LColR = abs(LR*ones(N)  + 0e3*randn(N));
 
@@ -19,9 +19,9 @@ numBitspRes = 4;
 base_freq = 10;
 fsource = base_freq*(2.^((1:N)-1))';
 
-oversampfactor = 8;
+oversampfactor = 2;
 fsamp = oversampfactor*2*max(fsource); tsamp = 1/fsamp;
-nsamp = 1*(fsamp/base_freq);
+nsamp = (fsamp/base_freq);
 t = 0:tsamp:(nsamp-1)*tsamp;
 
 %% Sim Setup
@@ -79,16 +79,16 @@ f = fsamp * norm_freq;
 % Organise into frequency components
 freqVal = fGetFieldValues(Circuit.FreqDom, 'IO', 'value');
 [fmag, fval] = deal(zeros(N));
-% filt_tol = 10;
+filt_tol = Inf;
 for rowIdx = 1:N
     for colIdx = 1:N
         freqSpectrum = freqVal(:, end, colIdx);
         
-        %         figure;
-        %         plot(f, freqSpectrum, 'r'); hold on;
-        %         freqSpectrum(abs(freqSpectrum)<max(abs(freqSpectrum))/filt_tol) = 0; %filter
-        %         plot(f, freqSpectrum); hold off;
-        %         title(sprintf("hft for f=%2.1fHz & col:%d", fsource(rowIdx), colIdx))
+                figure;
+                plot(f, freqSpectrum, 'r'); hold on;
+                freqSpectrum(abs(freqSpectrum)<max(abs(freqSpectrum))/filt_tol) = 0; %filter
+                plot(f, freqSpectrum); hold off;
+                title(sprintf("hft for f=%2.1fHz & col:%d", fsource(rowIdx), colIdx))
         
         minIdx = abs(norm_freq-(fsource(rowIdx)/fsamp));
         fmag(rowIdx, colIdx) = freqSpectrum(minIdx == min(minIdx, [], 2));

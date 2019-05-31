@@ -1,16 +1,16 @@
 %%
 setup.base_freq = 10;
-setup.perfect = true;
+setup.perfect = false;
 setup.oversampfactor = 2;%64*2;
 [BER, LREstimate] = fAlgorithm1(setup, 4, 4, [1e3, 0], 1, 10, 100e3);
 
 %%
 setup.base_freq = 10;
-setup.perfect = true;
+setup.perfect = false;
 setup.oversampfactor = 2;%64*2;
 % [BER, LREstimate] = fAlgorithm2(setup, 4, 4, [1e3, 0], 1, 10, 100e3);
 % [BER, LREstimate]
-BER= fAlgorithm2(setup, 3, 2, [1e3, 10000], 1, 10, 100e3);
+BER= fAlgorithm2(setup, 2, 3, [1e3, 10000], 1, 10, 100e3);
 
 % %%
 % N = 4; numBitspRes = 4;

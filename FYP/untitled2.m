@@ -13,8 +13,10 @@ for i = 1:N
     end
     corr_Vbias(i, :) = tmpCircuit.VI.value(i, :);
 end
-Corr_Frequency_Components = fUnits(corr_fmag , 'A')
 
+%%
+Corr_Frequency_Components = fUnits(corr_fmag , 'A')
+round(mean(round((fmag./corr_fmag).^(1/2), 1, 'significant'), 2), 1, 'significant')
 %%
 freqVal = fGetFieldValues(Circuit.FreqDom, 'IO', 'value');
 [meas_fmag, fval] = deal(zeros(N));
