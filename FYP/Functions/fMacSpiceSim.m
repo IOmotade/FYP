@@ -27,6 +27,7 @@ function Circuit = fMacSpiceSim(N, varargin)
 [vs, is, connVec, MemR, LRowR, LColR] = fSetup(N, varargin);
 
 %% Definition of different types of files
+foldername = 'MacSpiceSimFiles/';
 spiceFileName = 'mat_array.cir';
 simOutputFile = 'out.txt';
 tmpSimOutputFile = string(['tmp' simOutputFile]);
@@ -50,6 +51,12 @@ end
 
 %% Delete Temporary Files
 delete(tmpSimOutputFile)
+
+%% Move files to defined destination folder
+if ~strcmp(foldername, '')
+    movefile(spiceFileName, foldername);
+    movefile(simOutputFile, foldername);
+end
 
 end
 

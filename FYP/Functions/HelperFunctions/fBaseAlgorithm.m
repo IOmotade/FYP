@@ -1,8 +1,9 @@
-function BER = fAlgorithm2(setup, N, numBitspRes, LRdef, ruleNum, varargin)
+function BER = fBaseAlgorithm(setup, N, numBitspRes, LRdef, ruleNum, varargin)
 addpath(genpath('../FYP/Functions/'))
 internal_msg_len = 0;
-
+LR_maxdev = 0.1;
 script = false;
+
 %% Test as script
 if script
     setup = [];
@@ -46,46 +47,6 @@ end
 LRowR = abs(LRmean*ones(N)  + LRsigma*randn(N));
 LColR = abs(LRmean*ones(N)  + LRsigma*randn(N));
 
-%% Fingerprint Set-up
-fingerprint_filename = sprintf('Fingerprints/fingerprint_N_%d_LRmean_%2.0f_numBitspRes_%d_MemRange_%2.0f_%2.0f',...
-    N, LRmean, numBitspRes, var{1}, var{2});
-vs_mag = 5;
-memLength = N^2 * numBitspRes;
-idxLength = 2^memLength;
-
-try
-    load(fingerprint_filename, 'Fingerprint');
-catch
-    internal_msg_len = fDisplayInternalMessage...
-        ("Generating Fingerprint Database\n", internal_msg_len);
-    
-    Fingerprint = zeros(idxLength, N, N);
-    
-    tmp_prog_txtlen = 0;
-    for idx = 1:idxLength
-        bitsToStore = dec2bin(idx-1, memLength);
-        bitsToStore = bitsToStore(:);
-        bitsToStore = str2num(bitsToStore);
-        
-        [fingerprintMemR, ~] = fWriteToMemArray(N, numBitspRes, ruleNum, bitsToStore, var);
-        Fingerprint(idx, :, :) = fIdealOFDMSolution(N, vs_mag, fingerprintMemR, LRmean*ones(N), LRmean*ones(N));
-        
-        tmp_prog_txtlen = fClearInternalMessages(tmp_prog_txtlen);
-        tmp_prog_txtlen = fDisplayInternalMessage(...
-            sprintf("Completed %d out of %d Fingerprints\n", idx, idxLength),...
-            tmp_prog_txtlen);
-    end
-    fClearInternalMessages(tmp_prog_txtlen);
-    
-    internal_msg_len = fDisplayInternalMessage...
-        ("Generation Complete\n", internal_msg_len);
-    
-    save(fingerprint_filename, 'Fingerprint');
-    
-    internal_msg_len = fDisplayInternalMessage...
-        ("Fingerprint Database Saved\n", internal_msg_len);
-end
-
 %% Write to Memory
 [storedMemR, storedBits] = fWriteToMemArray(N, numBitspRes, ruleNum, [], var);
 
@@ -103,6 +64,7 @@ nsamp = 1*(fsamp/base_freq);
 %% Sim Setup
 MemR = storedMemR;
 
+vs_mag = 5;
 % vs = vs_mag*square(2*pi*fsource*t);
 vs = fVoltageSourceSignals(N, vs_mag, nsamp);
 Circuit = fMacSpiceSim(N, vs(:, 1), MemR, LRowR, LColR);
@@ -124,6 +86,7 @@ if ~setup.perfect
     end
     fClearInternalMessages(tmp_prog_txtlen);
     
+    
     internal_msg_len = ...
         fDisplayInternalMessage('Simulation Complete\n', internal_msg_len);
 end
@@ -139,10 +102,9 @@ catch
     filename = 'tmp';
     save(filename)
 end
-
 %% Load Result
 % load('SimData/tmp_var')
-load(filename)
+% load(filename)
 
 %% Get Haar Transform
 timeCircuit = Circuit;
@@ -181,27 +143,20 @@ else
     end
     fmag = corr_fmag;
 end
+I = fmag;
+% Frequency_Components = fUnits(fmag, 'A')
 
-%% Work out best fit to circuit
-distance = zeros(1, idxLength);
-for idx = 1:idxLength
-    val = fmag - squeeze(Fingerprint(idx, :, :));
-    distance(idx) = norm(val, 'fro')^2;
-end
-[~, solutionIdx] = min(distance);
+%% Memristor Value Finding Algorithm
+V = diag(vs_mag*ones(N, 1));
+G = I/V;
+CalMemR = 1./G;
 
-%% Read/Rework Bits Stored
-readBits = dec2bin(solutionIdx-1, memLength);
-readBits = readBits(:);
-readBits = str2num(readBits);
+%% Read Memory Array
+[readBits, ~] = fReadFromMemArray(N, numBitspRes, CalMemR, ruleNum, var);
 
-%% Actual stored state
-% pwr = (2.^(length(storedBits)-1:-1:0));
-% correctIdx = sum(storedBits(:).*pwr(:))+1;
-
-%% Read from Memory
-% [readBits, ~] = fReadFromMemArray(N, numBitspRes, CalMemR, ruleNum, var);
+%% Calculate Bit Error Rate
 BER = sum(storedBits~=readBits)/length(readBits);
+% fprintf("Number Of Bits In Error is %d out of %d bits.\n", (BER * N^2 * numBitspRes), N^2 * numBitspRes)
 
 %% Clear all internal messages
 fClearInternalMessages(internal_msg_len);

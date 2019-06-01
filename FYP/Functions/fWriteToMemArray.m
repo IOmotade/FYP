@@ -18,6 +18,8 @@
 % storedBits (Circuit) = Bits read from memristor array
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [MemR, storedBits] = fWriteToMemArray(N, numBitspRes, ruleNum, bitsToStore, varargin)
+internal_msg_len = 0;
+
 %% Calculate Total Memory Size
 memLength = N^2 * numBitspRes;
 if ~isempty(varargin)
@@ -26,16 +28,33 @@ else
     var = [];
 end
 
-%% Generate bit combinations and mapping
-posBits = (1:2^numBitspRes)-1; %Stored Bit Words
-posBits = fBin2Gray(dec2bin(posBits));
-posSymbs = bin2dec(posBits);
-
-%% Save possible bits to cut down on processing time in fReadFromMemArray
+%% Read possible bits to cut down on processing time in fReadFromMemArray
 filename = sprintf('Functions/EncodingRules/posBits_numBitspRes_%d.txt', numBitspRes);
-fid = fopen(filename, 'w');
-fwrite(fid, posBits);
-fclose(fid);
+fid = fopen(filename, 'r');
+if fid~=-1
+    posBits = reshape(fread(fid, 'uint8=>char'), [], numBitspRes);
+    fclose(fid);
+else
+    internal_msg_len = fDisplayInternalMessage...
+        ("Generating Gray Code Encoding\n", internal_msg_len);
+    
+    %% Generate bit combinations and mapping
+    posBits = (1:2^numBitspRes)-1; %Stored Bit Words
+    posBits = fBin2Gray(dec2bin(posBits));
+    
+    internal_msg_len = fDisplayInternalMessage...
+        ("Gray Code Encoding Generation Complete\n", internal_msg_len);
+    
+    %% Save possible bits to cut down on processing time in fReadFromMemArray/fWriteFromMemArray
+    filename = sprintf('Functions/EncodingRules/posBits_numBitspRes_%d.txt', numBitspRes);
+    fid = fopen(filename, 'w');
+    fwrite(fid, posBits);
+    fclose(fid);
+    internal_msg_len = fDisplayInternalMessage...
+        ("Gray Code Encoding Saved To File\n", internal_msg_len);
+    
+end
+posSymbs = bin2dec(posBits);
 
 %% Depending on Encoding Rule Used
 if ~exist('ruleNum', 'var')
@@ -84,4 +103,5 @@ storedSymbs = bin2dec(num2str(tmp));
 [rowIdx, ~] = find(posSymbs==storedSymbs.');
 MemR = reshape(posMemRValues(rowIdx), N, N);
 
+fClearInternalMessages(internal_msg_len);
 end

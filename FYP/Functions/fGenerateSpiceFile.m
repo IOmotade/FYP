@@ -4,7 +4,6 @@
 % Generate Spice files for use in simulations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inputs
-% type (String) = Either "Up" or "Down" to represent current flow path
 % N (Integer) = Order of memristor array i.e. NxN array
 % vs (2Nx1 Double) = Voltage Source/Sink values
 % is (2Nx1 Double) = Current Source/Sink values

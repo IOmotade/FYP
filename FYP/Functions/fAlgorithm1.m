@@ -1,7 +1,9 @@
 function [BER, LREstimate] = fAlgorithm1(setup, N, numBitspRes, LRdef, ruleNum, varargin)
 addpath(genpath('../FYP/Functions/'))
-
+internal_msg_len = 0;
+LR_maxdev = 0.1;
 script = false;
+
 %% Test as script
 if script
     setup = [];
@@ -54,9 +56,10 @@ base_freq = setup.base_freq;
 fsource = base_freq*(2.^((1:N)-1))';
 
 oversampfactor = setup.oversampfactor;
-fsamp = oversampfactor*2*max(fsource); tsamp = 1/fsamp;
+fsamp = oversampfactor*2*max(fsource);
 nsamp = 1*(fsamp/base_freq);
-t = 0:tsamp:(nsamp-1)*tsamp;
+% tsamp = 1/fsamp;
+% t = 0:tsamp:(nsamp-1)*tsamp;
 
 %% Sim Setup
 MemR = storedMemR;
@@ -69,20 +72,23 @@ Circuit = repmat(Circuit, [nsamp, 1]);
 
 %% Run Simulation
 if ~setup.perfect
-    disp("Started")
-    tic
-    wBar = waitbar(0, 'Starting Simulation');
-    complete = zeros(nsamp, 1);
+    internal_msg_len = ...
+        fDisplayInternalMessage('Starting Simulation\n', internal_msg_len);
+    
+    tmp_prog_txtlen = 0;
     for idx=1:nsamp
         Circuit(idx) = fMacSpiceSim(N, vs(:, idx), MemR, LRowR, LColR);
-        complete(idx) = 1;
-        progress = sum(complete)/nsamp;
-        waitbar(progress, wBar, sprintf('Simulation Progress: %2.2f percent', 100*progress))
+        
+        tmp_prog_txtlen = fClearInternalMessages(tmp_prog_txtlen);
+        tmp_prog_txtlen = fDisplayInternalMessage(...
+            sprintf('Simulation Progress: %2.2f percent\n', 100*(idx/nsamp)),...
+            tmp_prog_txtlen);
     end
-    waitbar(1, wBar, 'Simulation Complete');
-    toc
-    delete(wBar)
-    disp("Finished")
+    fClearInternalMessages(tmp_prog_txtlen);
+    
+    
+    internal_msg_len = ...
+        fDisplayInternalMessage('Simulation Complete\n', internal_msg_len);
 end
 
 %% Save Result
@@ -98,7 +104,7 @@ catch
 end
 %% Load Result
 % load('SimData/tmp_var')
-load(filename)
+% load(filename)
 
 %% Get Haar Transform
 timeCircuit = Circuit;
@@ -162,8 +168,9 @@ while ~exit_cond
     while ~exit_cond
         for i = 1:N
             for j = 1:N
-                if sum(isnan(CalMemR(:)))~=0
+                if sum(isnan(CalMemR(:)))~=0 || sum(CalMemR(:)<=0)~=0
                     CalMemR(isnan(CalMemR)) = abs(prevCalMemRinner(isnan(CalMemR)));
+                    CalMemR(CalMemR<0) = prevCalMemRinner(CalMemR<0);
                 end
                 prevCalMemRinner = CalMemR;
                 
@@ -209,26 +216,33 @@ while ~exit_cond
     exit_cond = ~(~fHasConverged(CalMemR, prevCalMemRouter) && (iterouter<=N^2)) && exit_cond;
 end
 
+%% Read Memory Array
+[readBits, CalMemR] = fReadFromMemArray(N, numBitspRes, CalMemR, ruleNum, var);
+
 %% Estimate Line Resistances
-LREstimate = zeros(N);
+allLREstimate = zeros(N);
 for i = 1:N
     for j = 1:N
         nCF = fNodeCurrentFactors([], N, i, j, 0, abs(CalMemR), LRowR, LColR);
         sumnCF = sum(nCF(i:end, 1));
         
-        LREstimate(i, j) = (Vbias(i, j)/Imem(i, j) - MemR(i, j))/sumnCF;
-        %         LREstimate(i, j) = Restimate(i, j)/eqResF(i, j);
+        allLREstimate(i, j) = (Vbias(i, j)/Imem(i, j) - MemR(i, j))/sumnCF;
     end
 end
-
+invalid = false(N, N);
 % Get rid of invalid values before averaging out
-LREstimate = LREstimate(:);
-LREstimate(LREstimate<=0) = [];
-LREstimate = mean(LREstimate(:));
+invalid(allLREstimate<=0) = true;
+invalid(allLREstimate>(1+LR_maxdev)*LRmean) = true;
+invalid(allLREstimate<(1-LR_maxdev)*LRmean) = true;
 
-%% Read from Memory
-[readBits, ~] = fReadFromMemArray(N, numBitspRes, CalMemR, ruleNum, var);
+validLREstimate = allLREstimate(~invalid);
+LREstimate = mean(validLREstimate(:));
+
+%% Calculate Bit Error Rate
 BER = sum(storedBits~=readBits)/length(readBits);
 % fprintf("Number Of Bits In Error is %d out of %d bits.\n", (BER * N^2 * numBitspRes), N^2 * numBitspRes)
+
+%% Clear all internal messages
+fClearInternalMessages(internal_msg_len);
 
 end
