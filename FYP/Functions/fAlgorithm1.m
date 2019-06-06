@@ -22,9 +22,12 @@ end
 
 %% Function Setup
 if length(LRdef)==2
-    [LRmean, LRsigma] = deal(LRdef(1), LRdef(2)*LRdef(1));
+    [LRmean, LRsigma, LRmeansigma] = deal(LRdef(1), LRdef(2)*LRdef(1), 0);
+elseif length(LRdef)==3
+    [LRmean, LRsigma, LRmeansigma] = deal(LRdef(1), LRdef(2)*LRdef(1),...
+        LRdef(3)*LRdef(1));
 else
-    [LRmean, LRsigma] = deal(LRdef(1), 0);
+    [LRmean, LRsigma, LRmeansigma] = deal(LRdef(1), 0, 0);
 end
 
 if ~exist('setup', 'var')
@@ -39,25 +42,31 @@ end
 
 if default_setup
     setup.perfect = false;
-    setup.base_freq = 10;
+    setup.basefreq = 10;
     setup.oversampfactor = 8;
+    setup.SNR = Inf;
+end
+
+if ~fFieldExist(setup, 'SNR')
+    setup.SNR = Inf;
 end
 
 %% Setup Circuit System
-LRowR = abs(LRmean*ones(N)  + LRsigma*randn(N));
-LColR = abs(LRmean*ones(N)  + LRsigma*randn(N));
+mean_offset = LRmeansigma*randn(1);
+LRowR = abs(LRmean*ones(N)  + LRsigma*randn(N) + mean_offset);
+LColR = abs(LRmean*ones(N)  + LRsigma*randn(N) + mean_offset);
 
 %% Write to Memory
 [storedMemR, storedBits] = fWriteToMemArray(N, numBitspRes, ruleNum, [], var);
 
 %% Carry Out Circuit Simulations
 % Setup time samples
-base_freq = setup.base_freq;
-fsource = base_freq*(2.^((1:N)-1))';
+basefreq = setup.basefreq;
+fsource = basefreq*(2.^((1:N)-1))';
 
 oversampfactor = setup.oversampfactor;
 fsamp = oversampfactor*2*max(fsource);
-nsamp = 1*(fsamp/base_freq);
+nsamp = 1*(fsamp/basefreq);
 % tsamp = 1/fsamp;
 % t = 0:tsamp:(nsamp-1)*tsamp;
 
@@ -67,13 +76,14 @@ MemR = storedMemR;
 vs_mag = 5;
 % vs = vs_mag*square(2*pi*fsource*t);
 vs = fVoltageSourceSignals(N, vs_mag, nsamp);
+vs = vs + (vs_mag/db2mag(setup.SNR))*randn(size(vs));
 Circuit = fMacSpiceSim(N, vs(:, 1), MemR, LRowR, LColR);
 Circuit = repmat(Circuit, [nsamp, 1]);
 
 %% Run Simulation
 if ~setup.perfect
-    internal_msg_len = ...
-        fDisplayInternalMessage('Starting Simulation\n', internal_msg_len);
+    %     internal_msg_len = ...
+    %         fDisplayInternalMessage('Starting Simulation', internal_msg_len);
     
     tmp_prog_txtlen = 0;
     for idx=1:nsamp
@@ -81,14 +91,14 @@ if ~setup.perfect
         
         tmp_prog_txtlen = fClearInternalMessages(tmp_prog_txtlen);
         tmp_prog_txtlen = fDisplayInternalMessage(...
-            sprintf('Simulation Progress: %2.2f percent\n', 100*(idx/nsamp)),...
+            sprintf('fAlgorithm1: Simulation Progress: %2.2f percent', 100*(idx/nsamp)),...
             tmp_prog_txtlen);
     end
     fClearInternalMessages(tmp_prog_txtlen);
     
     
-    internal_msg_len = ...
-        fDisplayInternalMessage('Simulation Complete\n', internal_msg_len);
+    %     internal_msg_len = ...
+    %         fDisplayInternalMessage('Simulation Complete', internal_msg_len);
 end
 
 %% Save Result
@@ -121,8 +131,16 @@ if ~setup.perfect
         for colIdx = 1:N
             freqSpectrum = freqVal(:, end, colIdx);
             minIdx = abs(norm_freq-(fsource(rowIdx)/fsamp));
-            fmag(rowIdx, colIdx) = freqSpectrum(minIdx == min(minIdx, [], 2));
-            fval(rowIdx, colIdx) = fsamp * norm_freq(minIdx == min(minIdx, [], 2));
+            spectrumIdx = (minIdx == min(minIdx, [], 2));
+            try
+                fmag(rowIdx, colIdx) = freqSpectrum(spectrumIdx);
+                fval(rowIdx, colIdx) = fsamp * norm_freq(spectrumIdx);
+            catch
+                [tmpVal, tmpIdx] = max(freqSpectrum(spectrumIdx));
+                fmag(rowIdx, colIdx) = tmpVal;
+                tmpVal = norm_freq(spectrumIdx);
+                fval(rowIdx, colIdx) = fsamp * tmpVal(tmpIdx);
+            end
         end
     end
 else
@@ -243,6 +261,6 @@ BER = sum(storedBits~=readBits)/length(readBits);
 % fprintf("Number Of Bits In Error is %d out of %d bits.\n", (BER * N^2 * numBitspRes), N^2 * numBitspRes)
 
 %% Clear all internal messages
-fClearInternalMessages(internal_msg_len);
+% fClearInternalMessages(internal_msg_len);
 
 end

@@ -1,7 +1,7 @@
 % Omotade Iluromi, GROUP (EE4), 2019, Imperial College.
 % 26/05/2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Calculates equivalent resistance(top or bottom) perceived at memristor's
+% Calculates equivalent resistance(to top or bottom/gnd) perceived at memristor's
 % bottom node
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inputs

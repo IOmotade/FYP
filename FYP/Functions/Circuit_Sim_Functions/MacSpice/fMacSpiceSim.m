@@ -25,11 +25,12 @@
 function Circuit = fMacSpiceSim(N, varargin)
 %% Set-up
 [vs, is, connVec, MemR, LRowR, LColR] = fSetup(N, varargin);
+id = fTimeStamp();
 
 %% Definition of different types of files
 foldername = 'MacSpiceSimFiles/';
-spiceFileName = 'mat_array.cir';
-simOutputFile = 'out.txt';
+spiceFileName = sprintf('mat_array_%s.cir', id);
+simOutputFile = sprintf('out_%s.txt', id);
 tmpSimOutputFile = string(['tmp' simOutputFile]);
 
 %% Generate Spice File
@@ -37,8 +38,8 @@ fileLoc = spiceFileName;
 Circuit = fGenerateSpiceFile(N, vs, is, connVec, MemR, LRowR, LColR, fileLoc);
 
 %% Perform Simulation Using Macspice
-command = sprintf('/Applications/MacSpice.app/Contents/MacOS/MacSpice -b mat_array.cir > %s',...
-    simOutputFile);
+command = sprintf('/Applications/MacSpice.app/Contents/MacOS/MacSpice -b %s > %s',...
+    spiceFileName, simOutputFile);
 [status] = system(command);
 
 %% Read Simulation Results
@@ -53,10 +54,21 @@ end
 delete(tmpSimOutputFile)
 
 %% Move files to defined destination folder
-if ~strcmp(foldername, '')
+try
+    if ~strcmp(foldername, '')
+        movefile(spiceFileName, [foldername, 'mat_array.cir']);
+        movefile(simOutputFile, [foldername, 'out.txt']);
+    end
+catch
     movefile(spiceFileName, foldername);
     movefile(simOutputFile, foldername);
 end
+
+%% Clear previous files that might exist in root folder
+delete('mat_array*.cir')
+delete('out*.txt')
+delete('tmp*mat_array*.cir')
+delete('tmp*out*.txt')
 
 end
 

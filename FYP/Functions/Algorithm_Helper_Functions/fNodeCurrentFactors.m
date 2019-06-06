@@ -2,7 +2,8 @@
 % 26/05/2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Calculates current factors perceived from memristor's bottom node to
-% Vdd/Vss roughly. (Assumes terminating nodes are connected to Vss)
+% Vdd/gnd roughly. (Assumes column terminating nodes are connected to gnd 
+% or open)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inputs
 % N (Integer) = Order of memristor array i.e. NxN array

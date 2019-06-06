@@ -1,9 +1,10 @@
 %%
-setup.base_freq = 10;
+setup.basefreq = 5;
 setup.perfect = false;
-setup.oversampfactor = 2;%64*2;
+setup.oversampfactor = 1;%64*2;
 tic
-[BER, LREstimate] = fAlgorithm1(setup, 4, 10, [1e3, 0], 2, 10, 100e3);
+% BER = fBaseAlgorithm(setup, 1, 1, [1e2, 0], 1, 10, 10e6);
+[BER, LREstimate] = fAlgorithm1(setup, 2, 2, [1e6, 0], 1, 10, 10e6);
 toc
 
 %%
@@ -12,7 +13,7 @@ setup.perfect = false;
 setup.oversampfactor = 2;%64*2;
 % [BER, LREstimate] = fAlgorithm2(setup, 4, 4, [1e3, 0], 1, 10, 100e3);
 % [BER, LREstimate]
-BER= fBaseAlgorithm(setup, 4, 16, [1e0, 0], 1, 10, 100e3);
+BER= fBaseAlgorithm(setup, 4, 8, [1e0, 0], 1, 10, 100e3);
 % BER= fAlgorithm2(setup, 1, 3, [1e3, 0], 1, 10, 100e3);
 
 % %%
@@ -43,3 +44,14 @@ BER= fBaseAlgorithm(setup, 4, 16, [1e0, 0], 1, 10, 100e3);
 %     prog_txtlen = strlength(prog_txt);
 % end
 % disp("Generation Complete");
+
+
+%%
+algo = 1;
+minNumBits = 1000;
+setup.N = 2;
+setup.numBitspRes = 8;
+setup.ruleNum = 1;
+setup.var = {[10], [10e6]};
+setup.LRdef = [1e3 0 0];
+BER = fSimulation(algo, setup, minNumBits)

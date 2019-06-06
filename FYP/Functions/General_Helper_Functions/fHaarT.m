@@ -40,8 +40,8 @@ for idx = 1:length(x)
     if sum(size(h) == size(x)) == 0
         h = transpose(h);
     end
-    hft(idx) = sum(x./h);
-    H(idx, :) = h;
+    hft(idx) = sum(x(:)./h);
+%     H(idx, :) = h;
 end
 hft = hft/length(hft);
 

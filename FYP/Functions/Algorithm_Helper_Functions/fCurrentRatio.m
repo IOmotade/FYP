@@ -1,7 +1,8 @@
 % Omotade Iluromi, GROUP (EE4), 2019, Imperial College.
 % 26/05/2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Calculates ratio of currents that flow through two resistors
+% Calculates ratio of currents that flow through two resistors in a
+% two-path admittance network
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inputs
 % Rx, Ry (Double) = Resistor Values

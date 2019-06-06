@@ -28,29 +28,29 @@ else
 end
 
 %% Read possible bits to cut down on processing time in fReadFromMemArray/fWriteFromMemArray
-filename = sprintf('Functions/EncodingRules/posBits_numBitspRes_%d.txt', numBitspRes);
-fid = fopen(filename, 'r');
+filePath = 'Functions/Circuit_Sim_Functions/Encoding_Rules/';
+fileLoc = sprintf('%sposBits_numBitspRes_%d.txt', filePath, numBitspRes);
+fid = fopen(fileLoc, 'r');
 if fid~=-1
     posBits = reshape(fread(fid, 'uint8=>char'), [], numBitspRes);
     fclose(fid);
 else
     internal_msg_len = fDisplayInternalMessage...
-        ("Generating Gray Code Encoding\n", internal_msg_len);
+        ('Generating Gray Code Encoding', internal_msg_len);
     
     %% Generate bit combinations and mapping
     posBits = (1:2^numBitspRes)-1; %Stored Bit Words
     posBits = fBin2Gray(dec2bin(posBits));
     
     internal_msg_len = fDisplayInternalMessage...
-        ("Gray Code Encoding Generation Complete\n", internal_msg_len);
+        ('Gray Code Encoding Generation Complete', internal_msg_len);
     
     %% Save possible bits to cut down on processing time in fReadFromMemArray/fWriteFromMemArray
-    filename = sprintf('Functions/EncodingRules/posBits_numBitspRes_%d.txt', numBitspRes);
-    fid = fopen(filename, 'w');
+    fid = fopen(fileLoc, 'w');
     fwrite(fid, posBits);
     fclose(fid);
     internal_msg_len = fDisplayInternalMessage...
-        ("Gray Code Encoding Saved To File\n", internal_msg_len);
+        ('Gray Code Encoding Saved To File', internal_msg_len);
     
 end
 posSymbs = bin2dec(posBits);

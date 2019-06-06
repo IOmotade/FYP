@@ -1,4 +1,4 @@
-%% Circuit System vs Time
+%% Simple Test of extracting frequency spectrum matrix from time simulation
 rst
 addpath(genpath('../FYP/Functions/'))
 
