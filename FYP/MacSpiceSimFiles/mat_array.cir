@@ -1,4 +1,4 @@
-*mat_array_06_11_16_43_34_212.cir
+*mat_array_06_11_17_13_10_339.cir
 
 
 *Row Voltage Sources
@@ -17,10 +17,10 @@ R42 RowC_2 MemRRow7 0.000000001000
 
 
 *Memristor Resistances
-R14 MemRRow4 MemRCol4 10.000000
+R14 MemRRow4 MemRCol4 10000000.000000
 R18 MemRRow8 MemRCol8 10.000000
 R17 MemRRow7 MemRCol7 10000000.000000
-R112 MemRRow12 MemRCol12 10000000.000000
+R112 MemRRow12 MemRCol12 10.000000
 
 
 *Line Row Resistances
