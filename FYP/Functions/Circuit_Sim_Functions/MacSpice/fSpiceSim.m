@@ -29,7 +29,7 @@ id = fTimeStamp();
 
 %Programs
 mac_exec = '/Applications/MacSpice.app/Contents/MacOS/MacSpice';
-win_exec = '..\..\Spice64\bin\ngspice_con';
+win_exec = '..\Spice64\bin\ngspice_con';
 
 %% Definition of different types of files
 foldername = 'MacSpiceSimFiles/';

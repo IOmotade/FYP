@@ -11,12 +11,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function Circuit = fReadSpiceSimResults(fileLoc, Circuit)
 %% Create temporary file
-[filePath, name, ext] = fileparts(fileLoc);
-if filePath==""
-    tmpFileLoc = strcat('tmp', name, ext);
-else
-    tmpFileLoc = strcat(filePath, '/tmp', name, ext);
-end
+[filePath, name, ext] = fileparts(char(fileLoc));
+tmpFileLoc = fullfile(filePath, strcat('tmp', name, ext));
 copyfile(char(fileLoc), char(tmpFileLoc))
 
 %% Pre-process File

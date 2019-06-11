@@ -111,7 +111,7 @@ MemR = storedMemR;
 % vs = vs_mag*square(2*pi*fsource*t);
 vs = fVoltageSourceSignals(N, vs_mag, nsamp);
 vs = vs + (vs_mag/db2mag(setup.SNR))*randn(size(vs));
-Circuit = fMacSpiceSim(N, vs(:, 1), MemR, LRowR, LColR);
+Circuit = fSpiceSim(N, vs(:, 1), MemR, LRowR, LColR);
 Circuit = repmat(Circuit, [nsamp, 1]);
 
 %% Run Simulation
@@ -121,7 +121,7 @@ if ~setup.perfect
     
     tmp_prog_txtlen = 0;
     for idx=1:nsamp
-        Circuit(idx) = fMacSpiceSim(N, vs(:, idx), MemR, LRowR, LColR);
+        Circuit(idx) = fSpiceSim(N, vs(:, idx), MemR, LRowR, LColR);
         
         tmp_prog_txtlen = fClearInternalMessages(tmp_prog_txtlen);
         tmp_prog_txtlen = fDisplayInternalMessage(...
