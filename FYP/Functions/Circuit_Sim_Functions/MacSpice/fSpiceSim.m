@@ -63,17 +63,17 @@ else
 end
 
 %% Delete Temporary Files
-delete(tmpSimOutputFile)
+delete(char(tmpSimOutputFile))
 
 %% Move files to defined destination folder
 try
     if ~strcmp(foldername, '')
-        movefile(spiceFileName, [foldername, 'mat_array.cir']);
-        movefile(simOutputFile, [foldername, 'out.txt']);
+        movefile(char(spiceFileName), char([foldername, 'mat_array.cir']));
+        movefile(char(simOutputFile), char([foldername, 'out.txt']));
     end
 catch
-    movefile(spiceFileName, foldername);
-    movefile(simOutputFile, foldername);
+    movefile(char(spiceFileName), char(foldername));
+    movefile(char(simOutputFile), char(foldername));
 end
 
 %% Clear previous files that might exist in root folder

@@ -29,9 +29,11 @@ end
 %% Main Sub-Functions
 %% Pre-Process Simulation Results File for further processing
 function pre_process(fileLoc)
-if ismac
+unwantedLineStarts = [];
+
+if ismac || ispc
     %% MacSpice
-    unwantedLineStarts = [
+    unwantedLineStarts = [unwantedLineStarts;
         "Cir";
         "Date";
         "Oper";
@@ -55,11 +57,12 @@ if ismac
         "Tota";
         "MacSp";
         ];
-    
-elseif ispc
+end
+
+if ispc
     %% ngspice
-    unwantedLineStarts = [
-        "Doing,";
+    unwantedLineStarts = [unwantedLineStarts;
+        "Doin";
         "No.";
         "short";
         "l, ";
@@ -78,6 +81,8 @@ elseif ispc
         "ac";
         "bv_max";
         "noisy";
+        "dtemp";
+        "exp";
         ];
 end
 
