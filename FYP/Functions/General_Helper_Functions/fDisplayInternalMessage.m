@@ -4,7 +4,14 @@ if ~exist('totalmsglen', 'var')
 end
 
 fprintf(strcat(msg, '\n'));
-totalmsglen = totalmsglen + numel(msg) + 1;
+
+if isunix
+    extra = 1;
+elseif ispc
+    extra = 2;
+end
+
+totalmsglen = totalmsglen + numel(msg) + extra;
 % totalmsglen = totalmsglen + strlength(msg);
 
 end
