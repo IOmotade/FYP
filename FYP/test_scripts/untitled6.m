@@ -4,7 +4,7 @@ setup.perfect = false;
 setup.oversampfactor = 1;%64*2;
 tic
 % BER = fBaseAlgorithm(setup, 1, 1, [1e2, 0], 1, 10, 10e6);
-[BER, LREstimate] = fAlgorithm1(setup, 2, 2, [1e6, 0], 1, 10, 10e6);
+[BER, LREstimate] = fAlgorithm1(setup, 4, 4, [100, 0], 1, 10, 10e6);
 toc
 
 %%
@@ -49,9 +49,9 @@ BER= fBaseAlgorithm(setup, 4, 8, [1e0, 0], 1, 10, 100e3);
 %%
 algo = 1;
 minNumBits = 1000;
-setup.N = 2;
-setup.numBitspRes = 8;
+setup.N = 8;
+setup.numBitspRes = 4;
 setup.ruleNum = 1;
-setup.var = {[10], [10e6]};
-setup.LRdef = [1e3 0 0];
+setup.var = {[1e3], [1e6]};
+setup.LRdef = [100 0 0];
 BER = fSimulation(algo, setup, minNumBits)

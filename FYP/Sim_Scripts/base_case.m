@@ -8,8 +8,8 @@ if algo_case==1
     setup.N = 8;
     setup.numBitspRes = 4;
     setup.ruleNum = 1;
-    setup.var = {[100], [1e6]};
-    setup.LRdef = [10e3 0 0];
+    setup.var = {[1e3], [1e6]};
+    setup.LRdef = [100 0 0];
     
-    minNumBits = 100;
+    minNumBits = 1000;
 end

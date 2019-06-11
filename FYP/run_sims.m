@@ -11,3 +11,6 @@ sim_rule_lin_log;
 sim_LRMean;
 sim_LRVariance;
 sim_SNR;
+
+%%
+exit

@@ -11,8 +11,10 @@ var = setup.var;
 algosetup.perfect = false;
 algosetup.basefreq = 10;
 algosetup.oversampfactor = 1;
-if ~exist('setup.SNR', 'var')
+if fFieldExist(setup, 'SNR')
     algosetup.SNR = setup.SNR;
+else
+    algosetup.SNR = Inf;
 end
 
 %% General Setup

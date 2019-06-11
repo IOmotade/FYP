@@ -33,7 +33,8 @@ fDisplayInternalMessage('sim_numBitspRes Simulation Complete');
 %% Save Data
 try
     foldername = 'Sim_Scripts/Results/';
-    filename = sprintf('%sBER_numBitspRes_%d_%d_%s', min(numBitspRes), max(numBitspRes), time_stamp);
+    filename = sprintf('%sBER_numBitspRes_%d_%d_%s',...
+        foldername, min(numBitspRes), max(numBitspRes), time_stamp);
     save(filename);
 catch
     filename = sprintf('BER_numBitspRes_%d_%d_%s', min(numBitspRes), max(numBitspRes), time_stamp);
@@ -44,4 +45,5 @@ end
 plot(numBitspRes, BER);
 title('Plot of BER against Number of Bits per Memristor')
 xlabel('Number of Bits per Memristor'); ylabel('BER')
+ylim([0 0.5])
 saveas(gcf, filename, 'png')

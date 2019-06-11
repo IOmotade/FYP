@@ -10,7 +10,7 @@ end
 base_case;
 
 %% Simulation Variables
-SNR_dB = 0:10;
+SNR_dB = -5:10;
 time_stamp = fTimeStamp;
 idx_SNR_dB_Length = length(SNR_dB);
 BER = zeros(1, idx_SNR_dB_Length);
@@ -33,14 +33,16 @@ fDisplayInternalMessage('sim_SNR_dB Simulation Complete');
 %% Save Data
 try
     foldername = 'Sim_Scripts/Results/';
-    filename = sprintf('%sBER_SNR_dB_%d_%d_%s', min(SNR_dB), max(SNR_dB), time_stamp);
+    filename = sprintf('%sBER_SNR_dB_%d_%d_%s',...
+        foldername, min(SNR_dB), max(SNR_dB), time_stamp);
     save(filename);
 catch
     filename = sprintf('BER_SNR_dB_%d_%d_%s', min(SNR_dB), max(SNR_dB), time_stamp);
     save(filename);
 end
 
-semilogx(SNR_dB, BER);
-title('Plot of BER against Mean of Line Resistance')
-xlabel('Mean of Line Resistance'); ylabel('BER')
+plot(SNR_dB, BER);
+title('Plot of BER against SNR')
+xlabel('SNR/dB'); ylabel('BER')
+ylim([0 0.5])
 saveas(gcf, filename, 'png')

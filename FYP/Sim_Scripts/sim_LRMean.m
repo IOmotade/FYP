@@ -33,7 +33,8 @@ fDisplayInternalMessage('sim_LRMean Simulation Complete');
 %% Save Data
 try
     foldername = 'Sim_Scripts/Results/';
-    filename = sprintf('%sBER_LRMean_%d_%d_%s', min(LRMean), max(LRMean), time_stamp);
+    filename = sprintf('%sBER_LRMean_%d_%d_%s',...
+        foldername, min(LRMean), max(LRMean), time_stamp);
     save(filename);
 catch
     filename = sprintf('BER_LRMean_%d_%d_%s', min(LRMean), max(LRMean), time_stamp);
@@ -43,4 +44,5 @@ end
 semilogx(LRMean, BER);
 title('Plot of BER against Mean of Line Resistance')
 xlabel('Mean of Line Resistance'); ylabel('BER')
+ylim([0 0.5])
 saveas(gcf, filename, 'png')

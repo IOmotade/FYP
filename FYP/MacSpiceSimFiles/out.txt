@@ -1,9 +1,9 @@
 
-Circuit: *mat_array_06_06_16_04_35.cir
+Circuit: *mat_array_06_11_13_58_58_591.cir
 
 
-Circuit: *mat_array_06_06_16_04_35.cir
-Date: Thu Jun  6 16:04:35  2019
+Circuit: *mat_array_06_11_13_58_58_591.cir
+Date: Tue Jun 11 13:58:58  2019
 
 
 Operating point information:
@@ -26,150 +26,150 @@ Operating point information:
 	colc_3	0.000000e+00
 	colc_2	0.000000e+00
 	colc_1	0.000000e+00
-	memrcol161	2.178305e-14
-	memrcol143	4.950825e-14
-	memrcol126	4.391307e-14
-	memrcol110	6.058840e-14
-	memrcol95	4.828404e-14
-	memrcol81	6.323788e-14
-	memrcol68	4.132375e-14
-	memrcol56	4.541291e-14
-	memrrow162	1.852746e+00
-	memrrow145	2.823944e+00
-	memrrow129	7.408571e+00
-	memrrow114	4.853781e+00
-	memrrow100	2.935523e-01
-	memrrow87	1.285690e+00
-	memrrow75	4.272917e+00
-	memrrow64	1.046396e+00
-	memrcol144	2.178305e-01
-	memrrow144	1.852746e+00
-	memrcol127	4.950825e-01
-	memrrow127	1.870263e+00
-	memrcol111	4.391307e-01
-	memrrow111	1.990851e+00
-	memrcol96	6.058840e-01
-	memrrow96	2.132598e+00
-	memrcol82	4.828404e-01
-	memrrow82	2.307057e+00
-	memrcol69	6.323788e-01
-	memrrow69	2.527115e+00
-	memrcol57	4.132375e-01
-	memrrow57	2.794534e+00
-	memrcol46	4.541291e-01
-	memrcol128	4.181443e-01
-	memrrow128	2.823944e+00
-	memrcol112	8.870935e-01
-	memrrow112	2.854016e+00
-	memrcol97	8.571024e-01
-	memrrow97	2.916868e+00
-	memrcol83	1.179057e+00
-	memrrow83	3.041500e+00
-	memrcol70	9.200822e-01
-	memrrow70	3.184756e+00
-	memrcol58	1.217396e+00
-	memrrow58	3.350660e+00
-	memrcol47	7.818297e-01
-	memrrow47	3.836105e+00
-	memrcol37	8.798391e-01
-	memrcol113	5.883862e-01
-	memrrow113	7.408571e+00
-	memrcol98	1.246325e+00
-	memrrow98	7.501570e+00
-	memrcol84	1.213293e+00
-	memrrow84	7.829077e+00
-	memrcol71	1.733605e+00
-	memrrow71	8.246795e+00
-	memrcol59	1.334677e+00
-	memrrow59	8.786625e+00
-	memrcol48	1.482872e+00
-	memrrow48	9.400975e+00
-	memrcol38	1.099521e+00
-	memrrow38	1.018498e+01
-	memrcol29	1.218247e+00
-	memrcol99	6.656291e-01
-	memrrow99	4.853781e+00
-	memrcol85	1.371048e+00
-	memrrow85	4.898653e+00
-	memrcol72	1.479273e+00
-	memrrow72	4.981322e+00
-	memrcol60	2.166041e+00
-	memrrow60	5.326473e+00
-	memrcol49	1.674753e+00
-	memrrow49	5.908503e+00
-	memrcol39	1.578693e+00
-	memrrow39	6.548263e+00
-	memrcol30	1.280936e+00
-	memrrow30	7.250142e+00
-	memrcol22	1.421837e+00
-	memrcol86	6.979992e-01
-	memrrow86	2.935523e-01
-	memrcol73	1.457977e+00
-	memrrow73	2.632384e-01
-	memrcol61	1.482769e+00
-	memrrow61	2.209772e-01
-	memrcol50	2.361599e+00
-	memrrow50	1.629440e-01
-	memrcol40	1.957098e+00
-	memrrow40	6.368967e-02
-	memrcol31	1.612396e+00
-	memrrow31	-9.23556e-02
-	memrcol23	1.238569e+00
-	memrrow23	-2.76811e-01
-	memrcol16	1.533330e+00
-	memrcol74	7.606831e-01
-	memrrow74	1.285690e+00
-	memrcol62	1.556853e+00
-	memrrow62	1.301437e+00
-	memrcol51	1.502037e+00
-	memrrow51	1.312395e+00
-	memrcol41	2.598378e+00
-	memrrow41	1.313875e+00
-	memrcol32	2.296233e+00
-	memrrow32	1.296089e+00
-	memrcol24	1.674510e+00
-	memrrow24	1.261635e+00
-	memrcol17	1.221456e+00
-	memrrow17	1.220299e+00
-	memrcol11	1.668129e+00
-	memrcol63	8.076200e-01
-	memrrow63	4.272917e+00
-	memrcol52	1.660517e+00
-	memrrow52	4.312901e+00
-	memrcol42	1.530783e+00
-	memrrow42	4.485451e+00
-	memrcol33	2.854424e+00
-	memrrow33	4.694933e+00
-	memrcol25	2.652037e+00
-	memrrow25	5.180105e+00
-	memrcol18	1.743504e+00
-	memrrow18	6.043958e+00
-	memrcol12	1.319966e+00
-	memrrow12	6.988437e+00
-	memrcol7	1.808976e+00
-	memrcol53	8.145732e-01
-	memrrow53	1.046396e+00
-	memrcol43	1.631615e+00
-	memrrow43	1.053349e+00
-	memrcol34	1.522597e+00
-	memrrow34	1.031400e+00
-	memrcol26	2.834779e+00
-	memrrow26	1.001266e+00
-	memrcol19	2.629160e+00
-	memrrow19	9.514866e-01
-	memrcol13	1.731872e+00
-	memrrow13	8.788309e-01
-	memrcol8	1.312201e+00
-	memrrow8	7.945432e-01
-	memrcol4	1.794092e+00
-	memrrow46	3.106598e+00
-	memrrow37	4.372452e+00
-	memrrow29	1.110526e+01
-	memrrow22	8.175804e+00
-	memrrow16	-4.86522e-01
-	memrrow11	1.063341e+00
-	memrrow7	8.039191e+00
-	memrrow4	7.024910e-01
+	memrcol161	-1.54602e-13
+	memrcol143	1.471418e-12
+	memrcol126	1.445285e-12
+	memrcol110	-1.52636e-12
+	memrcol95	-1.74716e-12
+	memrcol81	2.494543e-13
+	memrcol68	-2.99680e-13
+	memrcol56	2.676191e-12
+	memrrow162	-1.60069e+00
+	memrrow145	4.158258e+00
+	memrrow129	-4.20653e+00
+	memrrow114	3.500677e+00
+	memrrow100	-1.56486e+00
+	memrrow87	3.139714e+00
+	memrrow75	2.353444e+00
+	memrrow64	3.837483e+00
+	memrcol144	-1.54602e-02
+	memrrow144	-1.60069e+00
+	memrcol127	1.471418e-01
+	memrrow127	-1.75921e+00
+	memrcol111	1.445285e-01
+	memrrow111	-1.91831e+00
+	memrcol96	-1.52636e-01
+	memrrow96	-2.28369e+00
+	memrcol82	-1.74716e-01
+	memrrow82	-2.86217e+00
+	memrcol69	2.494543e-02
+	memrrow69	-3.44105e+00
+	memrcol57	-2.99680e-02
+	memrrow57	-4.02098e+00
+	memrcol46	2.676191e-01
+	memrcol128	1.276027e-01
+	memrrow128	4.158258e+00
+	memrcol112	2.948543e-01
+	memrrow112	4.158862e+00
+	memrcol97	4.953406e-01
+	memrrow97	4.160623e+00
+	memrcol83	-9.21678e-02
+	memrrow83	4.162751e+00
+	memrcol70	-3.49029e-01
+	memrrow70	4.165517e+00
+	memrcol58	5.092858e-02
+	memrrow58	4.168734e+00
+	memrcol47	3.391647e-01
+	memrrow47	4.583732e+00
+	memrcol37	5.360280e-01
+	memrcol113	2.700614e-01
+	memrrow113	-4.20653e+00
+	memrcol98	4.414100e-01
+	memrrow98	-4.20698e+00
+	memrcol84	8.457862e-01
+	memrrow84	-4.20789e+00
+	memrcol71	-3.23372e-02
+	memrrow71	-4.20931e+00
+	memrcol59	-5.23793e-01
+	memrrow59	-4.21197e+00
+	memrcol48	-3.34869e-01
+	memrrow48	-4.21575e+00
+	memrcol38	7.070267e-01
+	memrrow38	-4.60761e+00
+	memrcol29	3.580397e-01
+	memrcol99	4.129676e-01
+	memrrow99	3.500677e+00
+	memrcol85	5.884305e-01
+	memrrow85	3.501140e+00
+	memrcol72	1.196737e+00
+	memrrow72	3.502040e+00
+	memrcol60	2.874398e-02
+	memrrow60	3.733470e+00
+	memrcol49	-6.97453e-01
+	memrrow49	3.965455e+00
+	memrcol39	-3.32578e-01
+	memrrow39	4.198139e+00
+	memrcol30	1.075420e+00
+	memrrow30	4.431277e+00
+	memrcol22	7.158553e-01
+	memrcol86	5.554110e-01
+	memrrow86	-1.56486e+00
+	memrcol73	7.350143e-01
+	memrrow73	-1.77689e+00
+	memrcol61	1.317158e+00
+	memrrow61	-1.98916e+00
+	memrcol50	8.926976e-02
+	memrrow50	-2.20177e+00
+	memrcol40	-8.71812e-01
+	memrrow40	-2.64349e+00
+	memrcol31	-3.30741e-01
+	memrrow31	-3.26237e+00
+	memrcol23	1.108228e+00
+	memrrow23	-3.88169e+00
+	memrcol16	1.072388e+00
+	memrcol74	9.098814e-01
+	memrrow74	3.139714e+00
+	memrcol62	8.818493e-01
+	memrrow62	3.362697e+00
+	memrcol51	1.437909e+00
+	memrrow51	3.586423e+00
+	memrcol41	3.788999e-01
+	memrrow41	3.810364e+00
+	memrcol32	-8.69003e-01
+	memrrow32	4.035332e+00
+	memrcol24	-3.28464e-01
+	memrrow24	4.261036e+00
+	memrcol17	1.640027e+00
+	memrrow17	4.488114e+00
+	memrcol11	1.430739e+00
+	memrcol63	1.041369e+00
+	memrrow63	2.353444e+00
+	memrcol52	1.027941e+00
+	memrrow52	2.484652e+00
+	memrcol42	1.558446e+00
+	memrrow42	2.761530e+00
+	memrcol33	6.675026e-01
+	memrrow33	3.158717e+00
+	memrcol25	-8.66930e-01
+	memrrow25	3.556154e+00
+	memrcol18	-3.27561e-01
+	memrrow18	3.954914e+00
+	memrcol12	1.887018e+00
+	memrrow12	4.354103e+00
+	memrcol7	1.432164e+00
+	memrcol53	1.041648e+00
+	memrrow53	3.837483e+00
+	memrcol43	1.028363e+00
+	memrrow43	3.837763e+00
+	memrcol34	1.558674e+00
+	memrrow34	3.838464e+00
+	memrcol26	9.558563e-01
+	memrrow26	3.839393e+00
+	memrcol19	-8.66182e-01
+	memrrow19	4.128675e+00
+	memrcol13	-3.27087e-01
+	memrrow13	4.418706e+00
+	memrcol8	1.887300e+00
+	memrrow8	4.709212e+00
+	memrcol4	1.432521e+00
+	memrrow46	-5.00000e+00
+	memrrow37	5.000000e+00
+	memrrow29	-5.00000e+00
+	memrrow22	5.000000e+00
+	memrrow16	-5.00000e+00
+	memrrow11	5.000000e+00
+	memrrow7	5.000000e+00
+	memrrow4	5.000000e+00
 	i_36	0.000000e+00
 	i_28	0.000000e+00
 	i_21	0.000000e+00
@@ -178,34 +178,34 @@ Operating point information:
 	i_6	0.000000e+00
 	i_3	0.000000e+00
 	i_1	0.000000e+00
-	rowc_8	3.106598e+00
-	rowc_7	4.372452e+00
-	rowc_6	1.110526e+01
-	rowc_5	8.175804e+00
-	rowc_4	-4.86522e-01
-	rowc_3	1.063341e+00
-	rowc_2	8.039191e+00
-	rowc_1	7.024910e-01
+	rowc_8	-5.00000e+00
+	rowc_7	5.000000e+00
+	rowc_6	-5.00000e+00
+	rowc_5	5.000000e+00
+	rowc_4	-5.00000e+00
+	rowc_3	5.000000e+00
+	rowc_2	5.000000e+00
+	rowc_1	5.000000e+00
 
 	Source	Current
 	------	-------
 
-	v1#branch	1.072884e-05
-	v3#branch	-1.21117e-04
-	v6#branch	1.657009e-05
-	v10#branch	2.324581e-05
-	v15#branch	-1.02997e-04
-	v21#branch	-1.06812e-04
-	v28#branch	-6.19888e-05
-	v36#branch	-3.43323e-05
-	v2#branch	4.541291e-05
-	v5#branch	4.132375e-05
-	v9#branch	6.323788e-05
-	v14#branch	4.828404e-05
-	v20#branch	6.058840e-05
-	v27#branch	4.391307e-05
-	v35#branch	4.950825e-05
-	v44#branch	2.178305e-05
+	v1#branch	-2.91061e-03
+	v3#branch	-6.46877e-03
+	v6#branch	-8.68797e-03
+	v10#branch	1.120090e-02
+	v15#branch	-5.70011e-03
+	v21#branch	9.282112e-03
+	v28#branch	-8.62694e-03
+	v36#branch	9.797096e-03
+	v2#branch	2.676191e-03
+	v5#branch	-2.99680e-04
+	v9#branch	2.494543e-04
+	v14#branch	-1.74716e-03
+	v20#branch	-1.52636e-03
+	v27#branch	1.445285e-03
+	v35#branch	1.471418e-03
+	v44#branch	-1.54602e-04
 
  Resistor models (Simple linear resistor)
       model                     R
@@ -262,539 +262,539 @@ Operating point information:
      device                   r58                   r57                   r56
       model                     R                     R                     R
  resistance                 1e-09                 1e-09                 1e-09
-          i           2.17831e-05           4.95082e-05           4.39131e-05
-          p           4.74501e-19           2.45107e-18           1.92836e-18
+          i          -0.000154602            0.00147142            0.00144528
+          p           2.39017e-17           2.16507e-15           2.08885e-15
 
  Resistor: Simple linear resistor
      device                   r55                   r54                   r53
       model                     R                     R                     R
  resistance                 1e-09                 1e-09                 1e-09
-          i           6.05884e-05            4.8284e-05           6.32379e-05
-          p           3.67095e-18           2.33135e-18           3.99903e-18
+          i           -0.00152636           -0.00174716           0.000249454
+          p           2.32979e-15           3.05256e-15           6.22274e-17
 
  Resistor: Simple linear resistor
      device                   r52                   r51                 r3144
       model                     R                     R                     R
- resistance                 1e-09                 1e-09                 10000
-          i           4.13238e-05           4.54129e-05           2.17831e-05
-          p           1.70765e-18           2.06233e-18           4.74501e-06
+ resistance                 1e-09                 1e-09                   100
+          i           -0.00029968            0.00267619          -0.000154602
+          p           8.98083e-17             7.162e-15           2.39017e-06
 
  Resistor: Simple linear resistor
      device                 r3127                 r3111                  r396
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           4.95082e-05           4.39131e-05           6.05884e-05
-          p           2.45107e-05           1.92836e-05           3.67095e-05
+ resistance                   100                   100                   100
+          i            0.00147142            0.00144528           -0.00152636
+          p           0.000216507           0.000208885           0.000232979
 
  Resistor: Simple linear resistor
      device                  r382                  r369                  r357
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i            4.8284e-05           6.32379e-05           4.13238e-05
-          p           2.33135e-05           3.99903e-05           1.70765e-05
+ resistance                   100                   100                   100
+          i           -0.00174716           0.000249454           -0.00029968
+          p           0.000305256           6.22274e-06           8.98083e-06
 
  Resistor: Simple linear resistor
      device                  r346                 r3128                 r3112
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           4.54129e-05           2.00314e-05           3.92011e-05
-          p           2.06233e-05           4.01256e-06           1.53673e-05
+ resistance                   100                   100                   100
+          i            0.00267619            0.00143063            0.00147713
+          p             0.0007162            0.00020467            0.00021819
 
  Resistor: Simple linear resistor
      device                  r397                  r383                  r370
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           4.17972e-05           5.73172e-05           4.37242e-05
-          p             1.747e-05           3.28527e-05            1.9118e-05
+ resistance                   100                   100                   100
+          i            0.00350812           0.000604685           -0.00174313
+          p            0.00123069           3.65644e-05            0.00030385
 
  Resistor: Simple linear resistor
      device                  r358                  r347                  r337
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           5.85018e-05           3.68592e-05            4.2571e-05
-          p           3.42246e-05            1.3586e-05           1.81229e-05
+ resistance                   100                   100                   100
+          i           0.000259832            0.00369133            0.00268409
+          p           6.75124e-06            0.00136259           0.000720433
 
  Resistor: Simple linear resistor
      device                 r3113                  r398                  r384
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           1.70242e-05           3.59231e-05           3.56191e-05
-          p           2.89823e-06           1.29047e-05           1.26872e-05
+ resistance                   100                   100                   100
+          i            0.00142459            0.00146556            0.00350446
+          p           0.000202945           0.000214786            0.00122812
 
  Resistor: Simple linear resistor
      device                  r371                  r359                  r348
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           5.54548e-05           4.14595e-05           2.65475e-05
-          p           3.07524e-05           1.71889e-05           7.04772e-06
+ resistance                   100                   100                   100
+          i           0.000598306           -0.00174764           -0.00385797
+          p            3.5797e-05           0.000305425             0.0014884
 
  Resistor: Simple linear resistor
      device                  r338                  r329                  r399
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           3.17691e-05           3.38408e-05           7.72428e-06
-          p           1.00928e-05            1.1452e-05           5.96646e-07
+ resistance                   100                   100                   100
+          i            0.00367862           -0.00177988            0.00142906
+          p            0.00135322           0.000316798           0.000204222
 
  Resistor: Simple linear resistor
      device                  r385                  r372                  r360
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           1.24724e-05           2.65979e-05           4.32436e-05
-          p            1.5556e-06           7.07449e-06           1.87001e-05
+ resistance                   100                   100                   100
+          i             0.0014702            0.00350951           0.000610812
+          p            0.00021615            0.00123167           3.73091e-05
 
  Resistor: Simple linear resistor
      device                  r349                  r339                  r330
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           3.40076e-05           9.58211e-06           1.81416e-05
-          p           1.15651e-05           9.18169e-07           3.29117e-06
+ resistance                   100                   100                   100
+          i            -0.0017366           2.29048e-05            0.00368393
+          p           0.000301578           5.24628e-08            0.00135714
 
  Resistor: Simple linear resistor
      device                  r322                  r386                  r373
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i            2.0359e-05           3.23701e-06           8.69284e-06
-          p           4.14488e-06           1.04782e-07           7.55655e-07
+ resistance                   100                   100                   100
+          i            0.00357816            0.00142443            0.00146584
+          p            0.00128032           0.000202901           0.000214868
 
  Resistor: Simple linear resistor
      device                  r361                  r350                  r340
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           3.49607e-07           1.95558e-05           2.82345e-05
-          p           1.22225e-09           3.82429e-06           7.97186e-06
+ resistance                   100                   100                   100
+          i            0.00120421           0.000605258           -0.00174359
+          p           0.000145011           3.66337e-05           0.000304011
 
  Resistor: Simple linear resistor
      device                  r331                  r323                  r316
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           3.37031e-06          -4.23678e-06           1.11494e-05
-          p            1.1359e-07           1.79503e-07           1.24308e-06
+ resistance                   100                   100                   100
+          i            1.8374e-05           0.000328077            0.00356533
+          p           3.37605e-08           1.07635e-05            0.00127116
 
  Resistor: Simple linear resistor
      device                  r374                  r362                  r351
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           6.26839e-06           9.88758e-06           1.92681e-06
-          p           3.92927e-07           9.77642e-07           3.71259e-08
+ resistance                   100                   100                   100
+          i             0.0035447            0.00146835            0.00120751
+          p            0.00125649           0.000215605           0.000145809
 
  Resistor: Simple linear resistor
      device                  r341                  r332                  r324
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           2.36779e-05           3.39136e-05           6.21137e-06
-          p           5.60644e-06           1.15013e-05           3.85811e-07
+ resistance                   100                   100                   100
+          i             0.0028963           2.80841e-05           2.27693e-05
+          p           0.000838856           7.88719e-08            5.1844e-08
 
  Resistor: Simple linear resistor
      device                  r317                  r311                  r363
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i          -1.71131e-06           1.34799e-05           4.69369e-06
-          p           2.92859e-08           1.81708e-06           2.20307e-07
+ resistance                   100                   100                   100
+          i            0.00531799            0.00358351            0.00131487
+          p            0.00282811            0.00128415           0.000172889
 
  Resistor: Simple linear resistor
      device                  r352                  r342                  r333
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           1.03664e-05           2.87464e-06           2.56046e-05
-          p           1.07463e-06           8.26353e-08           6.55594e-06
+ resistance                   100                   100                   100
+          i            0.00146092            0.00120536            0.00288603
+          p           0.000213429            0.00014529           0.000832915
 
  Resistor: Simple linear resistor
      device                  r325                  r318                  r312
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           3.55804e-05           6.89945e-06           9.85101e-06
-          p           1.26596e-05           4.76024e-07           9.70423e-07
+ resistance                   100                   100                   100
+          i           2.07313e-05           9.02827e-06            0.00246991
+          p           4.29787e-08           8.15096e-09           0.000610044
 
  Resistor: Simple linear resistor
      device                   r37                  r353                  r343
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           1.40847e-05           6.95328e-07          -2.89018e-06
-          p           1.98379e-06           4.83481e-09           8.35312e-08
+ resistance                   100                   100                   100
+          i           1.42496e-05           2.79584e-06           4.21199e-06
+          p           2.03052e-08           7.81669e-10           1.77409e-09
 
  Resistor: Simple linear resistor
      device                  r334                  r326                  r319
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i          -8.18607e-07          -1.96446e-06          -2.28765e-06
-          p           6.70117e-09           3.85912e-08           5.23336e-08
+ resistance                   100                   100                   100
+          i           2.27979e-06            0.00288354           7.48854e-06
+          p           5.19744e-10           0.000831478           5.60782e-09
 
  Resistor: Simple linear resistor
      device                  r313                   r38                   r34
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           -1.1632e-06          -7.76448e-07          -1.48849e-06
-          p           1.35302e-08           6.02872e-09           2.21561e-08
+ resistance                   100                   100                   100
+          i           4.74579e-06           2.82191e-06           3.56748e-06
+          p           2.25225e-09           7.96319e-10           1.27269e-09
 
  Resistor: Simple linear resistor
      device                 r2144                 r2127                 r2111
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i                     0           1.75168e-06           1.20588e-05
-          p                     0           3.06839e-08           1.45415e-06
+ resistance                   100                   100                   100
+          i                     0           -0.00158523           -0.00159094
+          p                     0           0.000251296           0.000253109
 
  Resistor: Simple linear resistor
      device                  r296                  r282                  r269
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           1.41747e-05           1.74459e-05           2.20058e-05
-          p           2.00923e-06           3.04359e-06           4.84253e-06
+ resistance                   100                   100                   100
+          i           -0.00365377           -0.00578482           -0.00578885
+          p            0.00133501            0.00334642            0.00335108
 
  Resistor: Simple linear resistor
      device                  r257                  r246                 r2128
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           2.67419e-05           3.12064e-05                     0
-          p           7.15128e-06           9.73841e-06                     0
+ resistance                   100                   100                   100
+          i           -0.00579923           -0.00979024                     0
+          p            0.00336311            0.00958488                     0
 
  Resistor: Simple linear resistor
      device                 r2112                  r297                  r283
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           3.00717e-06           6.28516e-06           1.24632e-05
-          p            9.0431e-08           3.95032e-07           1.55332e-06
+ resistance                   100                   100                   100
+          i           6.04296e-06           1.76118e-05           2.12771e-05
+          p           3.65174e-09           3.10177e-08           4.52716e-08
 
  Resistor: Simple linear resistor
      device                  r270                  r258                  r247
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           1.43257e-05           1.65903e-05           4.85446e-05
-          p           2.05225e-06           2.75239e-06           2.35657e-05
+ resistance                   100                   100                   100
+          i           2.76563e-05           3.21709e-05            0.00414998
+          p           7.64872e-08           1.03496e-07            0.00172223
 
  Resistor: Simple linear resistor
      device                  r237                 r2113                  r298
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           5.36347e-05                     0           9.29991e-06
-          p           2.87668e-05                     0           8.64884e-07
+ resistance                   100                   100                   100
+          i            0.00416268                     0          -4.47659e-06
+          p            0.00173279                     0           2.00399e-09
 
  Resistor: Simple linear resistor
      device                  r284                  r271                  r259
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           3.27506e-05           4.17718e-05            5.3983e-05
-          p            1.0726e-05           1.74489e-05           2.91416e-05
+ resistance                   100                   100                   100
+          i          -9.12498e-06          -1.41787e-05          -2.66845e-05
+          p           8.32652e-09           2.01034e-08           7.12065e-08
 
  Resistor: Simple linear resistor
      device                  r248                  r238                  r229
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           6.14349e-05           7.84004e-05           9.20279e-05
-          p           3.77425e-05           6.14662e-05           8.46913e-05
+ resistance                   100                   100                   100
+          i           -3.7727e-05           -0.00391861           -0.00392392
+          p           1.42333e-07            0.00153555            0.00153972
 
  Resistor: Simple linear resistor
      device                  r299                  r285                  r272
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i                     0           4.48727e-06           8.26682e-06
-          p                     0           2.01356e-07           6.83404e-07
+ resistance                   100                   100                   100
+          i                     0           4.62925e-06           8.99613e-06
+          p                     0             2.143e-09           8.09304e-09
 
  Resistor: Simple linear resistor
      device                  r260                  r249                  r239
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           3.45151e-05            5.8203e-05           6.39761e-05
-          p           1.19129e-05           3.38759e-05           4.09294e-05
+ resistance                   100                   100                   100
+          i             0.0023143            0.00231985            0.00232684
+          p           0.000535598           0.000538172            0.00054142
 
  Resistor: Simple linear resistor
      device                  r230                  r222                  r286
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           7.01879e-05           9.25662e-05                     0
-          p           4.92634e-05           8.56851e-05                     0
+ resistance                   100                   100                   100
+          i            0.00233137            0.00568723                     0
+          p           0.000543531            0.00323446                     0
 
  Resistor: Simple linear resistor
      device                  r273                  r261                  r250
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i          -3.03138e-06          -4.22612e-06          -5.80332e-06
-          p           9.18927e-08           1.78601e-07           3.36785e-07
+ resistance                   100                   100                   100
+          i           -0.00212027           -0.00212278           -0.00212609
+          p           0.000449555           0.000450621           0.000452025
 
  Resistor: Simple linear resistor
      device                  r240                  r231                  r223
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i          -9.92544e-06          -1.56045e-05          -1.84456e-05
-          p           9.85143e-07           2.43501e-06            3.4024e-06
+ resistance                   100                   100                   100
+          i           -0.00441713           -0.00618881            -0.0061932
+          p            0.00195111            0.00383013            0.00383558
 
  Resistor: Simple linear resistor
      device                  r216                  r274                  r262
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i          -2.09711e-05                     0           1.57471e-06
-          p           4.39785e-06                     0            2.4797e-08
+ resistance                   100                   100                   100
+          i            -0.0111831                     0            0.00222983
+          p             0.0125062                     0           0.000497215
 
  Resistor: Simple linear resistor
      device                  r251                  r241                  r232
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           1.09584e-06           1.48014e-07          -1.77864e-06
-          p           1.20087e-08           2.19081e-10           3.16357e-08
+ resistance                   100                   100                   100
+          i            0.00223726            0.00223941            0.00224968
+          p           0.000500533           0.000501495           0.000506107
 
  Resistor: Simple linear resistor
      device                  r224                  r217                  r211
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i          -3.44544e-06          -4.13352e-06          -1.56958e-05
-          p           1.18711e-07            1.7086e-07           2.46359e-06
+ resistance                   100                   100                   100
+          i            0.00225704            0.00227078            0.00511886
+          p           0.000509421           0.000515643            0.00262028
 
  Resistor: Simple linear resistor
      device                  r263                  r252                  r242
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i                     0           3.99836e-06            1.7255e-05
-          p                     0           1.59869e-07           2.97734e-06
+ resistance                   100                   100                   100
+          i                     0            0.00131208            0.00276879
+          p                     0           0.000172154           0.000766618
 
  Resistor: Simple linear resistor
      device                  r233                  r225                  r218
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           2.09482e-05           4.85173e-05           8.63853e-05
-          p           4.38828e-06           2.35392e-05           7.46241e-05
+ resistance                   100                   100                   100
+          i            0.00397187            0.00397436             0.0039876
+          p            0.00157758            0.00157956             0.0015901
 
  Resistor: Simple linear resistor
      device                  r212                   r27                  r253
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           9.44479e-05           0.000105075                     0
-          p           8.92041e-05           0.000110408                     0
+ resistance                   100                   100                   100
+          i            0.00399189            0.00645897                     0
+          p            0.00159352            0.00417183                     0
 
  Resistor: Simple linear resistor
      device                  r243                  r234                  r226
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i           6.95328e-07          -2.19485e-06          -3.01345e-06
-          p           4.83481e-09           4.81736e-08           9.08091e-08
+ resistance                   100                   100                   100
+          i           2.79584e-06           7.00783e-06           9.28762e-06
+          p           7.81669e-10           4.91097e-09           8.62599e-09
 
  Resistor: Simple linear resistor
      device                  r219                  r213                   r28
       model                     R                     R                     R
- resistance                 10000                 10000                 10000
-          i          -4.97792e-06          -7.26557e-06          -8.42877e-06
-          p           2.47797e-07           5.27886e-07           7.10442e-07
+ resistance                   100                   100                   100
+          i            0.00289282            0.00290031            0.00290506
+          p           0.000836843           0.000841181           0.000843936
 
  Resistor: Simple linear resistor
      device                   r24                 r1144                 r1127
       model                     R                     R                     R
- resistance                 10000                933340                133420
-          i          -9.20522e-06           1.75168e-06           1.03072e-05
-          p            8.4736e-07           2.86385e-06           1.41742e-05
+ resistance                   100                  1000                334000
+          i            0.00290788           -0.00158523          -5.70765e-06
+          p           0.000845577            0.00251296           1.08808e-05
 
  Resistor: Simple linear resistor
      device                 r1111                  r196                  r182
       model                     R                     R                     R
- resistance                733360                466720                400060
-          i           2.11591e-06           3.27116e-06           4.55986e-06
-          p           3.28329e-06           4.99412e-06           8.31817e-06
+ resistance                  1000                  1000                667000
+          i           -0.00206284           -0.00213105          -4.02916e-06
+          p            0.00425529            0.00454137           1.08282e-05
 
  Resistor: Simple linear resistor
      device                  r169                  r157                  r146
       model                     R                     R                     R
- resistance                400060                533380                933340
-          i           4.73613e-06           4.46454e-06           2.84191e-06
-          p           8.97372e-06           1.06314e-05           7.53808e-06
+ resistance                334000                  1000                667000
+          i          -1.03772e-05           -0.00399101          -7.89748e-06
+          p           3.59675e-05             0.0159281           4.16009e-05
 
  Resistor: Simple linear resistor
      device                 r1128                 r1112                  r197
       model                     R                     R                     R
- resistance                800020                600040                333400
-          i           3.00717e-06           3.27799e-06           6.17806e-06
-          p           7.23466e-06           6.44754e-06           1.27254e-05
+ resistance                667000                334000                 1e+06
+          i           6.04296e-06           1.15689e-05           3.66528e-06
+          p           2.43571e-05           4.47023e-05           1.34343e-05
 
  Resistor: Simple linear resistor
      device                  r183                  r170                  r158
       model                     R                     R                     R
- resistance                 1e+06                 1e+06                 66760
-          i           1.86244e-06           2.26467e-06           3.19542e-05
-          p           3.46869e-06           5.12875e-06           6.81668e-05
+ resistance                667000                 1e+06                  1000
+          i           6.37919e-06           4.51455e-06            0.00411781
+          p           2.71429e-05           2.03811e-05             0.0169563
 
  Resistor: Simple linear resistor
      device                  r147                  r137                 r1113
       model                     R                     R                     R
- resistance                600040                400060                733360
-          i           5.09012e-06           8.73022e-06           9.29991e-06
-          p           1.55466e-05           3.04913e-05           6.34271e-05
+ resistance                334000                  1000                 1e+06
+          i           1.27083e-05            0.00446397          -4.47659e-06
+          p           5.39412e-05              0.019927           2.00399e-05
 
  Resistor: Simple linear resistor
      device                  r198                  r184                  r171
       model                     R                     R                     R
- resistance                266740                733360                533380
-          i           2.34507e-05           9.02119e-06           1.22112e-05
-          p            0.00014669           5.96823e-05           7.95336e-05
+ resistance                 1e+06                 1e+06                334000
+          i          -4.64839e-06          -5.05367e-06          -1.25059e-05
+          p           2.16075e-05           2.55396e-05           5.22367e-05
 
  Resistor: Simple linear resistor
      device                  r159                  r148                  r138
       model                     R                     R                     R
- resistance                 1e+06                466720                666700
-          i           7.45195e-06           1.69654e-05           1.36275e-05
-          p           5.55315e-05           0.000134334           0.000123812
+ resistance                334000                  1000                 1e+06
+          i          -1.10425e-05           -0.00388088          -5.31463e-06
+          p           4.07266e-05             0.0150612           2.82453e-05
 
  Resistor: Simple linear resistor
      device                  r129                  r199                  r185
       model                     R                     R                     R
- resistance                733360                933340                933340
-          i           1.34818e-05           4.48727e-06           3.77955e-06
-          p           0.000133295           1.87934e-05           1.33328e-05
+ resistance                  1000                667000                667000
+          i           -0.00535804           4.62925e-06           4.36688e-06
+          p             0.0287086           1.42938e-05           1.27195e-05
 
  Resistor: Simple linear resistor
      device                  r172                  r160                  r149
       model                     R                     R                     R
- resistance                133420                133420                733360
-          i           2.62483e-05           2.36878e-05           5.77309e-06
-          p           9.19229e-05           7.48638e-05           2.44418e-05
+ resistance                  1000                667000                667000
+          i             0.0023053           5.55431e-06           6.99087e-06
+          p            0.00531442           2.05772e-05           3.25978e-05
 
  Resistor: Simple linear resistor
      device                  r139                  r130                  r122
       model                     R                     R                     R
- resistance                800020                266740                733360
-          i           6.21181e-06           2.23784e-05           9.20962e-06
-          p             3.087e-05           0.000133581           6.22015e-05
+ resistance                 1e+06                  1000                334000
+          i           4.53072e-06            0.00335586           1.28268e-05
+          p           2.05274e-05             0.0112618           5.49518e-05
 
  Resistor: Simple linear resistor
      device                  r186                  r173                  r161
       model                     R                     R                     R
- resistance                133420                 1e+06                800020
-          i          -3.03138e-06          -1.19474e-06           -1.5772e-06
-          p           1.22603e-06            1.4274e-06            1.9901e-06
+ resistance                  1000                 1e+06                 1e+06
+          i           -0.00212027           -2.5119e-06          -3.30632e-06
+          p            0.00449555           6.30965e-06           1.09318e-05
 
  Resistor: Simple linear resistor
      device                  r150                  r140                  r131
       model                     R                     R                     R
- resistance                533380                333400                600040
-          i          -4.12212e-06          -5.67909e-06          -2.84106e-06
-          p           9.06311e-06           1.07528e-05           4.84331e-06
+ resistance                  1000                  1000                667000
+          i           -0.00229104           -0.00177168          -4.39524e-06
+          p            0.00524888            0.00313883           1.28852e-05
 
  Resistor: Simple linear resistor
      device                  r123                  r116                  r174
       model                     R                     R                     R
- resistance                600040                866680                333400
-          i          -2.52547e-06          -2.33056e-06           1.57471e-06
-          p           3.82704e-06           4.70739e-06           8.26731e-07
+ resistance                  1000                334000                  1000
+          i           -0.00498992          -1.81808e-05            0.00222983
+          p             0.0248993           0.000110401            0.00497215
 
  Resistor: Simple linear resistor
      device                  r162                  r151                  r141
       model                     R                     R                     R
- resistance                533380                200080                666700
-          i          -4.78863e-07          -9.47828e-07          -1.92666e-06
-          p           1.22309e-07           1.79748e-07            2.4748e-06
+ resistance                334000                 1e+06                334000
+          i           7.42769e-06           2.14851e-06           1.02738e-05
+          p            1.8427e-05           4.61611e-06           3.52543e-05
 
  Resistor: Simple linear resistor
      device                  r132                  r124                  r117
       model                     R                     R                     R
- resistance                600040                600040                   100
-          i           -1.6668e-06          -6.88079e-07          -1.15623e-05
-          p           1.66704e-06           2.84091e-07           1.33687e-08
+ resistance                667000                334000                  1000
+          i           7.35283e-06            1.3741e-05            0.00284809
+          p           3.60607e-05           6.30644e-05             0.0081116
 
  Resistor: Simple linear resistor
      device                  r111                  r163                  r152
       model                     R                     R                     R
- resistance                 1e+06                866680                200080
-          i          -6.04788e-07           3.99836e-06           1.32566e-05
-          p           3.65769e-07           1.38555e-05           3.51616e-05
+ resistance                  1000                  1000                  1000
+          i            0.00356926            0.00131208            0.00145671
+          p             0.0127396            0.00172154              0.002122
 
  Resistor: Simple linear resistor
      device                  r142                  r133                  r125
       model                     R                     R                     R
- resistance                800020                 66760                 66760
-          i           3.69324e-06            2.7569e-05            3.7868e-05
-          p           1.09123e-05           5.07411e-05           9.57329e-05
+ resistance                  1000                 1e+06                334000
+          i            0.00120308           2.49121e-06           1.32428e-05
+          p            0.00144741           6.20615e-06           5.85739e-05
 
  Resistor: Simple linear resistor
      device                  r118                  r112                   r17
       model                     R                     R                     R
- resistance                533380                533380                400060
-          i           8.06265e-06           1.06275e-05           1.55732e-05
-          p            3.4673e-05           6.02414e-05           9.70244e-05
+ resistance                 1e+06                  1000                334000
+          i           4.28248e-06            0.00246708           1.06821e-05
+          p           1.83396e-05            0.00608651           3.81121e-05
 
  Resistor: Simple linear resistor
      device                  r153                  r143                  r134
       model                     R                     R                     R
- resistance                333400                200080                600040
-          i           6.95328e-07          -2.89018e-06          -8.18607e-07
-          p           1.61193e-07           1.67129e-06           4.02097e-07
+ resistance                 1e+06                667000                 1e+06
+          i           2.79584e-06           4.21199e-06           2.27979e-06
+          p           7.81669e-06           1.18332e-05           5.19744e-06
 
  Resistor: Simple linear resistor
      device                  r126                  r119                  r113
       model                     R                     R                     R
- resistance                933340                733360                733360
-          i          -1.96446e-06          -2.28765e-06           -1.1632e-06
-          p           3.60187e-06           3.83794e-06           9.92254e-07
+ resistance                  1000                667000                 1e+06
+          i            0.00288354           7.48854e-06           4.74579e-06
+          p            0.00831478           3.74042e-05           2.25225e-05
 
  Resistor: Simple linear resistor
      device                   r18                   r14                   r48
       model                     R                     R                     R
- resistance                666700                733360                 1e-09
-          i          -7.76448e-07          -1.48849e-06            3.4639e-05
-          p           4.01935e-07           1.62484e-06           1.19986e-18
+ resistance                 1e+06                 1e+06                 1e-09
+          i           2.82191e-06           3.56748e-06            -0.0097975
+          p           7.96319e-06           1.27269e-05           9.59909e-14
 
  Resistor: Simple linear resistor
      device                   r47                   r46                   r45
       model                     R                     R                     R
  resistance                 1e-09                 1e-09                 1e-09
-          i           6.21725e-05           0.000106581           0.000103029
-          p           3.86542e-18           1.13596e-17           1.06149e-17
+          i            0.00862688           -0.00928235            0.00570033
+          p            7.4423e-14           8.61621e-14           3.24938e-14
 
  Resistor: Simple linear resistor
      device                   r44                   r43                   r42
       model                     R                     R                     R
  resistance                 1e-09                 1e-09                 1e-09
-          i          -2.32592e-05          -1.66533e-05           0.000120792
-          p           5.40989e-19           2.77334e-19           1.45908e-17
+          i            -0.0112017            0.00868816            0.00646949
+          p           1.25478e-13           7.54841e-14           4.18543e-14
 
  Resistor: Simple linear resistor
      device                   r41
       model                     R
  resistance                 1e-09
-          i          -1.07692e-05
-          p           1.15975e-19
+          i            0.00291056
+          p           8.47136e-15
 
  Vsource: Independent voltage source
      device                   v44                   v35                   v27
          dc                     0                     0                     0
       acmag                     0                     0                     0
-          i           2.17831e-05           4.95082e-05           4.39131e-05
-          p                     0                     0                     0
+          i          -0.000154602            0.00147142            0.00144528
+          p                    -0                     0                     0
 
  Vsource: Independent voltage source
      device                   v20                   v14                    v9
          dc                     0                     0                     0
       acmag                     0                     0                     0
-          i           6.05884e-05            4.8284e-05           6.32379e-05
-          p                     0                     0                     0
+          i           -0.00152636           -0.00174716           0.000249454
+          p                    -0                    -0                     0
 
  Vsource: Independent voltage source
      device                    v5                    v2                   v36
-         dc                     0                     0                3.1066
+         dc                     0                     0                    -5
       acmag                     0                     0                     0
-          i           4.13238e-05           4.54129e-05          -3.43323e-05
-          p                     0                     0          -0.000106657
+          i           -0.00029968            0.00267619             0.0097971
+          p                    -0                     0            -0.0489855
 
  Vsource: Independent voltage source
      device                   v28                   v21                   v15
-         dc               4.37245               11.1053                8.1758
+         dc                     5                    -5                     5
       acmag                     0                     0                     0
-          i          -6.19888e-05          -0.000106812          -0.000102997
-          p          -0.000271043           -0.00118617          -0.000842082
+          i           -0.00862694            0.00928211           -0.00570011
+          p            -0.0431347            -0.0464106            -0.0285006
 
  Vsource: Independent voltage source
      device                   v10                    v6                    v3
-         dc             -0.486522               1.06334               8.03919
+         dc                    -5                     5                     5
       acmag                     0                     0                     0
-          i           2.32458e-05           1.65701e-05          -0.000121117
-          p          -1.13096e-05           1.76197e-05           -0.00097368
+          i             0.0112009           -0.00868797           -0.00646877
+          p            -0.0560045            -0.0434399            -0.0323439
 
  Vsource: Independent voltage source
      device                    v1
-         dc              0.702491
+         dc                     5
       acmag                     0
-          i           1.07288e-05
-          p           7.53691e-06
+          i           -0.00291061
+          p            -0.0145531
 
-CPU time since last call: 0.048 seconds.
+CPU time since last call: 0.041 seconds.
 
-Total CPU time: 0.048 seconds.
+Total CPU time: 0.041 seconds.
 
 MacSpice memory reserved: 20971520,
-MacSpice memory peak use:   767184,
-MacSpice memory in use:     556128.
+MacSpice memory peak use:   727984,
+MacSpice memory in use:     556688.
 

@@ -41,7 +41,8 @@ catch
     save(filename);
 end
 
-semilogx(LRVariance, BER);
+plot(LRVariance, BER);
 title('Plot of BER against Variance of Line Resistance')
 xlabel('Variance of Line Resistance'); ylabel('BER')
+ylim([0 0.5])
 saveas(gcf, filename, 'png')

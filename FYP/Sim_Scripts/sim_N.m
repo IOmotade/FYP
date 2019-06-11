@@ -10,7 +10,7 @@ end
 base_case;
 
 %% Simulation Variables
-N = 1:10;
+N = 2.^(0:3);%2.^(0:4);
 time_stamp = fTimeStamp;
 idx_NLength = length(N);
 BER = zeros(1, idx_NLength);
@@ -33,7 +33,8 @@ fDisplayInternalMessage('sim_N Simulation Complete');
 %% Save Data
 try
     foldername = 'Sim_Scripts/Results/';
-    filename = sprintf('%sBER_N_%d_%d_%s', min(N), max(N), time_stamp);
+    filename = sprintf('%sBER_N_%d_%d_%s',...
+        foldername, min(N), max(N), time_stamp);
     save(filename);
 catch
     filename = sprintf('BER_N_%d_%d_%s', min(N), max(N), time_stamp);
@@ -44,4 +45,5 @@ end
 plot(N, BER);
 title('Plot of BER against N')
 xlabel('N'); ylabel('BER')
+ylim([0 0.5])
 saveas(gcf, filename, 'png')
