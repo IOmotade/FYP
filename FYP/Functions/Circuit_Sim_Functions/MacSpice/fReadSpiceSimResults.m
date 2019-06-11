@@ -29,28 +29,60 @@ end
 %% Main Sub-Functions
 %% Pre-Process Simulation Results File for further processing
 function pre_process(fileLoc)
-unwantedLineStarts = ["Cir";
-    'Date';
-    'Oper';
-    'Node';
-    '---';
-    'Sou';
-    'Resist';
-    'mode';
-    'rsh';
-    'narr';
-    'tc';
-    'def';
-    'resistan';
-    'p';
-    'acm';
-    'dc';
-    'CPU';
-    'Tota';
-    ];
+if ismac
+    %% MacSpice
+    unwantedLineStarts = [
+        "Cir";
+        "Date";
+        "Oper";
+        "Node";
+        "---";
+        "Sou";
+        "Sou";
+        "Isourc";
+        "Vsource";
+        "Resist";
+        "mode";
+        "rsh";
+        "narr";
+        "tc";
+        "def";
+        "resistan";
+        "p";
+        "acm";
+        "dc";
+        "CPU";
+        "Tota";
+        "MacSp";
+        ];
+    
+elseif ispc
+    %% ngspice
+    unwantedLineStarts = [
+        "Doing,";
+        "No.";
+        "short";
+        "l, ";
+        "kf";
+        "af";
+        "lf";
+        "wf";
+        "ef";
+        "m, ";
+        "sin";
+        "sffm";
+        "am";
+        "trnoise";
+        "trrandom";
+        "current";
+        "ac";
+        "bv_max";
+        "noisy";
+        ];
+end
 
-fRemoveLines_v1(fileLoc, unwantedLineStarts)
 fRemoveExtraWhitespace(fileLoc);
+fRemoveLines_v1(fileLoc, unwantedLineStarts)
 
 end
 
@@ -209,12 +241,9 @@ end
 
 function fRemoveLine(fileLoc, lineChars)
 
-[filePath, name, ext] = fileparts(fileLoc);
-if filePath==""
-    tmpFileLoc = strcat('tmp', name, ext);
-else
-    tmpFileLoc = strcat(filePath, '/tmp', name, ext);
-end
+[filePath, name, ext] = fileparts(char(fileLoc));
+tmpFileLoc = fullfile(filePath, strcat('tmp', name, ext));
+copyfile(char(fileLoc), char(tmpFileLoc))
 
 expr = char(strcat(lineChars, '(\w*)'));
 
@@ -231,7 +260,13 @@ while ischar(text_in)
     valid = ~isempty(text_in);
     
     %Remove unneccessary lines
-    strtIdx = regexp(text_in,expr, 'ONCE');
+    lenChars = length(char(lineChars)) + 1;
+    if length(text_in)>=lenChars
+        strtIdx = regexp(text_in(1:lenChars),expr, 'ONCE');
+    else
+        strtIdx = regexp(text_in, expr, 'ONCE');
+    end
+    
     valid = valid & isempty(strtIdx);
     if  valid
         fprintf(fid_out,'%s\n',text_in);
@@ -254,12 +289,9 @@ end
 
 function fRemoveExtraWhitespace(fileLoc)
 
-[filePath, name, ext] = fileparts(fileLoc);
-if filePath==""
-    tmpFileLoc = strcat('tmp', name, ext);
-else
-    tmpFileLoc = strcat(filePath, '/tmp', name, ext);
-end
+[filePath, name, ext] = fileparts(char(fileLoc));
+tmpFileLoc = fullfile(filePath, strcat('tmp', name, ext));
+copyfile(char(fileLoc), char(tmpFileLoc))
 
 %Make temporary copy of file
 copyfile(char(fileLoc), char(tmpFileLoc))
