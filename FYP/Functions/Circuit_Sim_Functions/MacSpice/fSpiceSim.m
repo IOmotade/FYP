@@ -47,7 +47,7 @@ try
         command = sprintf('%s -b %s > %s', mac_exec, spiceFileName, simOutputFile);
         [status] = system(command);
     elseif ispc
-        command = sprintf('%s -b %s > %s', win_exec, spiceFileName, simOutputFile);
+        command = sprintf('%s -b %s > %s 2>&1', win_exec, spiceFileName, simOutputFile);
         [status] = system(command);
 %     elseif isunix
     end
