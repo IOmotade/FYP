@@ -4,7 +4,7 @@ setup.perfect = false;
 setup.oversampfactor = 1;%64*2;
 tic
 % BER = fBaseAlgorithm(setup, 1, 1, [1e2, 0], 1, 10, 10e6);
-[BER, LREstimate] = fAlgorithm1(setup, 4, 4, [100, 0], 1, 10, 10e6);
+[BER, LREstimate] = fAlgorithm1(setup, 2, 4, [100, 0], 1, 10, 10e6);
 toc
 
 %%
