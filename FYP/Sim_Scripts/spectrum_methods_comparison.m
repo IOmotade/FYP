@@ -30,7 +30,7 @@ Circuit = repmat(Circuit, [nsamp, 1]);
 
 tmp_prog_txtlen = 0;
 for idx=1:nsamp
-    Circuit(idx) = fMacSpiceSim(N, vs(:, idx), MemR, LRowR, LColR);
+    Circuit(idx) = fSpiceSim(N, vs(:, idx), MemR, LRowR, LColR);
     
     tmp_prog_txtlen = fClearInternalMessages(tmp_prog_txtlen);
     tmp_prog_txtlen = fDisplayInternalMessage(...
@@ -61,7 +61,7 @@ for o_idx = 1:length(oversampfactor)
     %%
     tmp_prog_txtlen = 0;
     for idx=1:nsamp
-        Circuit(idx) = fMacSpiceSim(N, vs(:, idx), MemR, LRowR, LColR);
+        Circuit(idx) = fSpiceSim(N, vs(:, idx), MemR, LRowR, LColR);
         
         tmp_prog_txtlen = fClearInternalMessages(tmp_prog_txtlen);
         tmp_prog_txtlen = fDisplayInternalMessage(...

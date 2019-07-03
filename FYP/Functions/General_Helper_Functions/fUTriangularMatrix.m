@@ -7,7 +7,7 @@
 % N (Integer) = Number of Rows/Columns of output square matrix
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Outputs
-% J (N x N Integer) = Upper Triangular Matrix
+% UT (N x N Integer) = Upper Triangular Matrix
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function UT = fUTriangularMatrix(N)
 UT = triu(ones(N));

@@ -1,7 +1,7 @@
 % Omotade Iluromi, GROUP (EE4), 2019, Imperial College.
 % 26/05/2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Gives the Haar Transform of a signal x
+% Gives the 'Haar' Transform of a signal x
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inputs
 % x (1xN Double) = time series values of signal x

@@ -3,9 +3,12 @@ setup.basefreq = 5;
 setup.perfect = false;
 setup.oversampfactor = 1;%64*2;
 tic
-% BER = fBaseAlgorithm(setup, 1, 1, [1e2, 0], 1, 10, 10e6);
-% [BER, LREstimate] = fAlgorithm2(setup, 2, 4, [100, 0], 1, 10, 10e6);
-BER = fAlgorithm2(setup, 2, 1, [100, 0], 1, 10, 10e6);
+% BER = fBaseAlgorithmTest(setup, 4, 8, [100, 0], 1, 1e3, 1e6);
+% [BER1, LREstimate1] = fAlgorithm1Test(setup, 4, 8, [100, 0], 1, 1e3, 1e6);
+[BER2, LREstimate2] = fAlgorithm1_1Test(setup, 4, 2, [100, 0], 1, 1e3, 1e6);
+% [BER3, LREstimate3] = fAlgorithm1_2Test(setup, 4, 8, [100, 0], 1, 1e3, 1e6);
+% [BER4, LREstimate4] = fAlgorithm1_2(setup, 4, 16, [100, 0], 1, 1e3, 1e6);
+% BER = fAlgorithm2Test(setup, 2, 1, [100, 0], 1, 10, 10e6);
 toc
 
 %%
@@ -48,11 +51,29 @@ BER= fBaseAlgorithm(setup, 4, 8, [1e0, 0], 1, 10, 100e3);
 
 
 %%
-algo = 1;
-minNumBits = 1000;
-setup.N = 8;
+rst
+algo = [0 1 1.1 1.2];
+minNumBits = 100;
+setup.N = 4;
 setup.numBitspRes = 4;
-setup.ruleNum = 1;
 setup.var = {[1e3], [1e6]};
 setup.LRdef = [100 0 0];
-BER = fSimulation(algo, setup, minNumBits)
+setup.SNR = 100;
+
+setup.ruleNum = 1;
+BER = fSimulation(algo, setup, minNumBits, false);
+r1 = BER;
+
+setup.ruleNum = 2;
+BER = fSimulation(algo, setup, minNumBits, false);
+r2 = BER;
+
+setup.ruleNum = 3;
+BER = fSimulation(algo, setup, minNumBits, false);
+r3 = BER;
+
+setup.ruleNum = 4;
+BER = fSimulation(algo, setup, minNumBits, false);
+r4 = BER;
+
+[r1 r2 r3 r4]

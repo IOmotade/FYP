@@ -1,7 +1,7 @@
 % Omotade Iluromi, GROUP (EE4), 2019, Imperial College.
 % 26/05/2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Converts a simulated circuit from the time domain to frequency domain
+% Write a number of bits to memristor array using encoding rule
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inputs
 % N (Integer) = Order of memristor array i.e. NxN array
@@ -76,12 +76,26 @@ else
             posMemRValues = rule1(numBitspRes);
         end
     elseif ruleNum==2
-        %Rule 1
+        %Rule 2
         %rule1(numBitspRes, MemRLowLim, MemRUpLim);
         if length(var)==2
             posMemRValues = rule2(numBitspRes, var{1}, var{2});
         else
             posMemRValues = rule2(numBitspRes);
+        end
+    elseif ruleNum==3
+        %Rule 3
+        %rule3(numBitspRes, MemRLowLim, MemRUpLim);
+        if length(var)==2
+            posMemRValues = rule2(numBitspRes, var{1}, var{2});
+        else
+            posMemRValues = rule2(numBitspRes);
+        end
+    elseif ruleNum==4
+        if length(var)==2
+            posMemRValues = rule4(numBitspRes, var{1}, var{2});
+        else
+            posMemRValues = rule4(numBitspRes);
         end
     end
 end

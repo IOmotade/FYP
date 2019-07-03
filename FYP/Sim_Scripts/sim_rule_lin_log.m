@@ -13,8 +13,8 @@ base_case;
 numBitspRes = 1:10;
 time_stamp = fTimeStamp;
 idx_numBitspRes_Length = length(numBitspRes);
-BER{1} = zeros(1, idx_numBitspRes_Length);
-BER{2} = zeros(1, idx_numBitspRes_Length);
+BER{1} = zeros(length(algo), idx_numBitspRes_Length);
+BER{2} = zeros(length(algo), idx_numBitspRes_Length);
 
 %% Run simulation for Algorithm X
 
@@ -25,7 +25,7 @@ fDisplayInternalMessage('Starting sim_rule_lin_log Simulation');
 tmp_prog_txtlen = 0;
 for idx_numBitspRes=1:idx_numBitspRes_Length
     setup.numBitspRes = numBitspRes(idx_numBitspRes);
-    BER{1}(idx_numBitspRes) = fSimulation(algo, setup, minNumBits);
+    BER{1}(:, idx_numBitspRes) = fSimulation(algo, setup, minNumBits);
     
     tmp_prog_txtlen = fClearInternalMessages(tmp_prog_txtlen);
     tmp_prog_txtlen = fDisplayInternalMessage(...
@@ -40,7 +40,7 @@ setup.ruleNum = 2;
 tmp_prog_txtlen = 0;
 for idx_numBitspRes=1:idx_numBitspRes_Length
     setup.numBitspRes = numBitspRes(idx_numBitspRes);
-    BER{2}(idx_numBitspRes) = fSimulation(algo, setup, minNumBits);
+    BER{2}(:, idx_numBitspRes) = fSimulation(algo, setup, minNumBits);
     
     tmp_prog_txtlen = fClearInternalMessages(tmp_prog_txtlen);
     tmp_prog_txtlen = fDisplayInternalMessage(...
@@ -63,7 +63,7 @@ catch
 end
 
 %% Plot Image and Save
-plot(numBitspRes, BER{1}, numBitspRes, BER{2});
+plot(numBitspRes, BER{1}', numBitspRes, BER{2}');
 title('Plot of BER against Number of Bits per Memristor')
 xlabel('Number of Bits per Memristor'); ylabel('BER');
 legend('Linear Rule', 'Logarithmic Rule');

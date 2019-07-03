@@ -8,7 +8,7 @@ fprintf(strcat(msg, '\n'));
 if isunix
     extra = 1;
 elseif ispc
-    extra = 2;
+    extra = 3;
 end
 
 totalmsglen = totalmsglen + numel(msg) + extra;

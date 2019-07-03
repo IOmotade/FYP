@@ -9,7 +9,9 @@
 % in the array
 % MemR (NxN Double) = Memristor array values
 % rulenum (Integer) = Rule used for writing/reading to/from memristor array
-% bitsStored (1xR) = Bits originally stored in array
+% MimMemRValue (Double) = Minimum Possible Memristor Resistance Value
+% MaxMemRValue (Double) = Maximum Possible Memristor Resistance Value
+% bitsStored (1xR Integer) = Bits originally stored in array
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Outputs
 % readBits (Circuit) = Bits read from memristor array
@@ -84,6 +86,20 @@ else
         end
         posMemRValues = log10(posMemRValues);
         MemR = log10(MemR);
+    elseif ruleNum==3
+        %Rule 1
+        %rule1(numBitspRes, MemRLowLim, MemRUpLim);
+        if length(var)==2
+            posMemRValues = rule2(numBitspRes, var{1}, var{2});
+        else
+            posMemRValues = rule2(numBitspRes);
+        end
+    elseif ruleNum==4
+        if length(var)==2
+            posMemRValues = rule4(numBitspRes, var{1}, var{2});
+        else
+            posMemRValues = rule4(numBitspRes);
+        end
     end
 end
 
